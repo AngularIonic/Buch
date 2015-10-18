@@ -1,0 +1,14 @@
+<form name="meinFormular" ng-submit="meinFormular.$dirty && meinFormular.$valid && sendeFormular()">
+  <div ng-if="meinFormular.$dirty && meinFormular.$invalid">
+    <span ng-if="meinFormular.name.$error.required">
+      Es muss ein Name eingegeben werden
+    </span>
+    <span ng-if="!meinFormular.name.$error.required">
+      Der eingegebene Name ist schon vergeben
+    </span>
+  </div>
+  <label>
+    <input type="text" name="name" ng-style="{'color': meinFormular.$dirty && meinFormular.$invalid ? 'red' : 'black'}" ng-model="benutzerName" ng-change="checkNutzer()" required>
+  </label>
+  <button ng-disabled="meinFormular.$pristine || meinFormular.$invalid">Absenden</button>
+</form>

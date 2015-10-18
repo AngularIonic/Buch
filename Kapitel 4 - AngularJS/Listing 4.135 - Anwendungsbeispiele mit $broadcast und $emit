@@ -1,0 +1,44 @@
+meineApp.controller("meinElternController", [
+  "$scope",
+  function ($scope) {
+    $scope.$on("meinControllerAnEltern", function (event, daten) {
+      $scope.elternDaten = daten;
+    });
+  }
+]);
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    $scope.sendeEvents = function () {
+      // An Eltern-Scopes
+      $scope.$emit("meinControllerAnEltern", {
+        "geladen": true
+      });
+      // An Kinder-Scopes
+      $scope.$broadcast("meinControllerAnKinder", {
+        "geladen": true
+      });
+    };
+  }
+]);
+meineApp.controller("meinKindController", [
+  "$scope",
+  function ($scope) {
+    $scope.$on("meinControllerAnKinder", function (event, daten) {
+      $scope.kindDaten = daten;
+    });
+  }
+]);
+...
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinElternController">
+  {{elternDaten}}
+  <!-- Verknüpfung von Controller mit dem DOM -->
+  <div ng-controller="meinController">
+    <button ng-click="sendeEvents()">Absenden</button>
+    <!-- Verknüpfung von Controller mit dem DOM -->
+    <div ng-controller="meinKindController">
+      {{kindDaten}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    var nutzer = ["Heinz", "Karl", "Peter"];
+    $scope.checkNutzer = function () {
+      // Prüfe, ob eingegebener Nutzername nicht vorhanden
+      if ($scope.benutzerName && nutzer.indexOf($scope.benutzerName) === -1) {
+        $scope.meinFormular.$invalid = false;
+      } else {
+        $scope.meinFormular.$invalid = true;
+      }
+    };
+  }
+]);
+...
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinController">
+  <form name="meinFormular">
+    <label>
+      <input type="text" ng-style="{'color': meinFormular.$dirty && meinFormular.$invalid ? 'red' : 'black'}" ng-model="benutzerName" ng-change="checkNutzer()" required>
+    </label>
+    <button ng-disabled="meinFormular.$invalid">Absenden</button>
+  </form>
+</div>

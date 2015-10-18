@@ -1,0 +1,10 @@
+<style>
+  input.ng-invalid.ng-dirty {
+    color: red;
+    border: 1px dashed red;
+  }
+  input.ng-valid.ng-dirty {
+    color: green;
+    border: 1px solid green;
+  }
+</style>

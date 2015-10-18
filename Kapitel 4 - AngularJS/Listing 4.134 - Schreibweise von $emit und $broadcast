@@ -1,0 +1,13 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // An Eltern-Scopes
+    $scope.$emit("meinControllerAnEltern", {
+      "geladen": true
+    });
+    // An Kinder-Scopes
+    $scope.$broadcast("meinControllerAnKinder", {
+      "geladen": true
+    });
+  }
+]);

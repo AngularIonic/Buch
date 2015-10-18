@@ -1,0 +1,8 @@
+<?php
+var name = $_POST["name"];
+?>
+...
+<form action="meineSchnittstelle.php" method="POST">
+  <input type="text" name="name">
+  <button type="submit">Absenden</button>
+</form>

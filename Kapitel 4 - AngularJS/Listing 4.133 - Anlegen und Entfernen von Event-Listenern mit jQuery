@@ -1,0 +1,8 @@
+<button id="meinButton">Klick</button>
+...
+function klickFunktion (event) {
+  // Klick auf meinenButton
+  alert("KLICK!");
+  $("#meinButton").off("click", klickFunktion);
+}
+$("#meinButton").on("click", klickFunktion);

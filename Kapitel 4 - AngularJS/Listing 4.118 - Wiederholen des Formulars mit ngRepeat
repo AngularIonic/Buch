@@ -1,0 +1,8 @@
+<form name="meinFormular_{{durchlauf}}" ng-repeat="durchlauf in [1,2,3]">
+  <label>
+    Hat Fokus {{hatFokus}}<br/>
+    <input type="text" ng-style="{'color': nameVergeben ? 'red' : 'black'}" ng-model="benutzerName" ng-focus="fokus()" ng-blur="checkNutzer()">
+  </label>
+  <button ng-disabled="nameVergeben">Absenden</button>
+</form>
+{{meinFormular_1}}

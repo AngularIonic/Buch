@@ -1,0 +1,6 @@
+<button id="meinButton">Klick</button>
+...
+document.getElementById("meinButton").addEventListener("click", function (event) {
+  // Klick auf meinenButton
+  alert("KLICK!");
+});

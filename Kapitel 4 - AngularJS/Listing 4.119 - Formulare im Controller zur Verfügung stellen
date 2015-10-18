@@ -1,0 +1,34 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    var nutzer = ["Heinz", "Karl", "Peter"];
+    $scope.hatFokus = false;
+    $scope.nameVergeben = false;
+    // Objekt für Formulare
+    $scope.formulare = {};
+    $scope.fokus = function () {
+      $scope.hatFokus = true;
+    };
+    $scope.checkNutzer = function () {
+      // Prüfe, ob eingegebener Nutzername nicht vorhanden
+      if (nutzer.indexOf($scope.benutzerName) === -1) {
+        $scope.nameVergeben = false;
+      } else {
+        $scope.nameVergeben = true;
+      }
+      $scope.hatFokus = false;
+    };
+  }
+]);
+...
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinController">
+  <form name="formulare.meinFormular_{{durchlauf}}" ng-repeat="durchlauf in [1,2,3]">
+    <label>
+      Hat Fokus {{hatFokus}}<br/>
+      <input type="text" ng-style="{'color': nameVergeben ? 'red' : 'black'}" ng-model="benutzerName" ng-focus="fokus()" ng-blur="checkNutzer()">
+    </label>
+    <button ng-disabled="nameVergeben">Absenden</button>
+  </form>
+  {{formulare.meinFormular_1}}
+</div>
