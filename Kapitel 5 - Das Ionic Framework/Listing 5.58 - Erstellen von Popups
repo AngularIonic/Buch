@@ -1,0 +1,81 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  "$ionicPopup",
+  function ($scope, $timeout, $ionicPopup) {
+    // Zeige Hinweis-Popup
+    $scope.zeigeHinweisPopup = function () {
+      var popup = $ionicPopup.alert({
+        title: "Hinweis",
+        template: "Bitte diesen Hinweis unbedingt beachten!",
+        okText: 'Verstanden!'
+      });
+      // Setze Variable, dass Popup geschlossen
+      popup.then(function () {
+        $scope.geschlossen = "Hinweis Popup";
+      });
+    };
+    // Zeige Eingabe-Popup
+    $scope.zeigeEingabePopup = function () {
+      var popup = $ionicPopup.prompt({
+        title: "Eingabe",
+        template: "Bitte Ihre Kontonummer eintragen!",
+        inputPlaceholder: "Kontonummer",
+        inputType: "text",
+        cancelText: 'Schade :(',
+        okText: 'Los geht´s!'
+      });
+      // Setze Variable, dass Popup geschlossen
+      popup.then(function () {
+        $scope.geschlossen = "Eingabe Popup";
+      });
+    };
+    // Zeige Bestätigungs-Popup
+    $scope.zeigeBesteatigungsPopup = function () {
+      var popup = $ionicPopup.confirm({
+        title: "Bestätigung!",
+        template: "Bitte bestätigen Sie!",
+        cancelText: 'Abbrechen',
+        okText: 'Okay!'
+      });
+      // Setze Variable, dass Popup geschlossen
+      popup.then(function () {
+        $scope.geschlossen = "Bestätigungs-Popup";
+      });
+    };
+    // Zeige eigenes Popup
+    $scope.zeigeEigenesPopup = function () {
+      var popup = $ionicPopup.show({
+        title: "Mein Popup",
+        subTitle: "Es folgt der Inhalt",
+        template: "<b>Hier steht der Inhalt</b><br />So was tolles",
+        buttons: [{
+          text: "Verzögert schließen",
+          onTap: function (event) {
+            // Verhindert, dass das Popup geschlossen wird
+            event.preventDefault();
+            // Schließe Popup manuell
+            $timeout(function () {
+              popup.close();
+            }, 2000);
+          }
+        }, {
+          text: "Okay",
+          type: "button-assertive"
+        }]
+      });
+      // Setze Variable, dass Popup geschlossen
+      popup.then(function () {
+        $scope.geschlossen = "Eigenes Popup";
+      });
+    };
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <button ng-click="zeigeHinweisPopup()" class="button">Hinweis</button>
+  <button ng-click="zeigeEingabePopup()" class="button">Eingabeaufforderung</button>
+  <button ng-click="zeigeBesteatigungsPopup()" class="button">Bestätigung</button>
+  <button ng-click="zeigeEigenesPopup()" class="button">eigenes Popup</button>
+  <p ng-if="geschlossen">Es wurde {{geschlossen}} geschlossen!</p>
+</ion-content>

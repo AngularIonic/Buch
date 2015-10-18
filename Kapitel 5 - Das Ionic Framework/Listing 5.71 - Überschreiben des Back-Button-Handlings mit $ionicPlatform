@@ -1,0 +1,11 @@
+meineApp.run([
+  "$ionicPlatform",
+  function ($ionicPlatform) {
+    // Warte, bis Gerät bereit ist
+    $ionicPlatform.ready(function () {
+      $ionicPlatform.registerBackButtonAction(function () {
+        // Überschreibe Standard-"Zurück-Aktion"
+      }, 100);
+    });
+  }
+]);

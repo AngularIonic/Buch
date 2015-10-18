@@ -1,0 +1,64 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$ionicSlideBoxDelegate",
+  function ($scope, $ionicSlideBoxDelegate) {
+    // Standard-Slides
+    $scope.slides = ['Slide1', 'Slide2', 'Slide3'];
+    // Anzahl der Slides
+    $scope.anzahl = function () {
+      return $ionicSlideBoxDelegate.slidesCount();
+    };
+    // Autoplay ist aktiv zu Beginn
+    $scope.laeuft = true;
+    // Starte Blättern
+    $scope.start = function () {
+      $scope.laeuft = true;
+      $ionicSlideBoxDelegate.start();
+    };
+    // Stoppe Blättern
+    $scope.stop = function () {
+      $scope.laeuft = false;
+      $ionicSlideBoxDelegate.stop();
+    };
+    // Füge Slide hinzu
+    $scope.plus = function () {
+      $scope.slides.push('Slide' + ($scope.slides.length + 1));
+      $ionicSlideBoxDelegate.update();
+    };
+    // Aktiviere/Deaktiviere Slidebox
+    $scope.sliden = function () {
+      var zustand = $ionicSlideBoxDelegate.enableSlide();
+      $ionicSlideBoxDelegate.enableSlide(!zustand);
+    };
+    // Ist aktiviert
+    $scope.istAktiv = function () {
+      return $ionicSlideBoxDelegate.enableSlide();
+    };
+    // Zu Slide wechseln
+    $scope.wechselZu = function (index) {
+      $ionicSlideBoxDelegate.slide(index);
+      $scope.laeuft = true;
+    };
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <p>Slide-Anzahl: <b>{{anzahl()}}</b></p>
+  <ion-slide-box auto-play="true" pager-click="wechselZu(index)" does-continue="true" style="height: 250px">
+    <ion-slide ng-repeat="slide in slides">
+      <b>Das ist ein Slide</b>
+      <br>
+      {{slide}}
+    </ion-slide>
+  </ion-slide-box>
+  <div class="button-bar">
+    <button ng-if="laeuft" ng-click="stop()" class="button button-assertive">
+      Stop
+    </button>
+    <button ng-if="!laeuft" ng-click="start()" class="button button-positive">
+      Start
+    </button>
+    <button ng-click="sliden()" class="button" ng-class="{'button-balanced': !istAktiv(), 'button-assertive': istAktiv()}">{{istAktiv() ? "Deaktivieren" : "Aktivieren"}}</button>
+    <button ng-click="plus()" class="button button-royal">+</button>
+  </div>
+</ion-content>

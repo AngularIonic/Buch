@@ -1,0 +1,5 @@
+<ion-checkbox>Funktion 1</ion-checkbox>
+<ion-checkbox ng-checked="true">Funktion 2</ion-checkbox>
+<br />
+<input type="checkbox"><label>Funktion 3</label><br />
+<input type="checkbox" checked="checked"><label>Funktion 4</label>

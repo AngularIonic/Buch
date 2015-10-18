@@ -1,0 +1,22 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Die Listeneinträge
+    $scope.liste = ["Eintrag 1", "Eintrag 2", "Eintrag 3", "Eintrag 4", "Eintrag 5", "Eintrag 6"];
+    // Eintrag ändern
+    $scope.aendern = function (index) {
+      $scope.liste[index] = $scope.liste[index] + '!';
+    };
+  }
+]);
+...
+<ion-content ng-controller="meinController" padding="true">
+  <ion-list>
+    <ion-item ng-repeat="eintrag in liste">
+      {{eintrag}}
+      <ion-option-button class="button-positive" ng-click="aendern($index)">
+        Ändern
+      </ion-option-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

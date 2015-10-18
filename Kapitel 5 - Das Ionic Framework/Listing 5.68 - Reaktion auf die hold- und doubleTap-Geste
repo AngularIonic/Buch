@@ -1,0 +1,29 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  "$ionicGesture",
+  function ($scope, $timeout, $ionicGesture) {
+    // Initialisiere Zählvariablen
+    $scope.hold = 0;
+    $scope.doubleTapped = 0;
+    // Callback für Double-Tap Listener
+    function doubleTap() {
+      $timeout(function () {
+        $scope.doubleTapped = $scope.doubleTapped + 1;
+      });
+    }
+    // Listener für Double-Tap auf den ganzen Inhaltsbereich
+    $ionicGesture.on("doubletap", doubleTap, angular.element(document.body));
+    // Callback für die Hold-Geste
+    $scope.halte = function () {
+      $timeout(function () {
+        $scope.hold = $scope.hold + 1;
+      });
+    };
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController" on-hold="halte()">
+  <p>{{hold}} Mal gehalten!</p>
+  <p>{{doubleTapped}} Mal doppelt angetippt!</p>
+</ion-content>

@@ -1,0 +1,20 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  function ($scope, $timeout) {
+    // Initialisiere Zählvariable
+    $scope.klicks = 0;
+    // Callback für Double-Tap Listener
+    function klick() {
+      $timeout(function () {
+        $scope.klicks = $scope.klicks + 1;
+      });
+    }
+    // Listener für Klicks auf den ganzen Inhaltsbereich
+    ionic.EventController.on("click", klick, document.body);
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <p>{{klicks}} Mal geklickt!</p>
+</ion-content>

@@ -1,0 +1,47 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  "$ionicActionSheet",
+  function ($scope, $timeout, $ionicActionSheet) {
+    // ActionSheet anzeigen
+    $scope.zeigeActionSheet = function () {
+      var versteckeActionSheet = $ionicActionSheet.show({
+        buttons: [{
+          text: "<b>Schreibe</b> 'Huhu'"
+        }, {
+          text: "<b>Zeige</b> 'Hallo'"
+        }],
+        titleText: "Action!",
+        destructiveText: "Sauber machen!",
+        cancelText: "Abbrechen",
+        destructiveButtonClicked: function () {
+          // Setze Ausgabe zurück
+          $scope.ausgabe = "";
+          delete $scope.button;
+          // Schließe Action Sheet
+          return true;
+        },
+        buttonClicked: function (index, button) {
+          // Erste Schaltfläche
+          if (index === 0) {
+            $scope.ausgabe = "Huhu";
+            $scope.button = button;
+          } else { // Zweite Schaltfläche
+            $scope.ausgabe = "Hallo";
+            $scope.button = button;
+          }
+          // Schließe Action Sheet
+          return true;
+        }
+      });
+      // Verstecke Action Sheet automatisch nach 5 Sekunden
+      $timeout(versteckeActionSheet, 5000);
+    };
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <button ng-click="zeigeActionSheet()" class="button">Action Sheet</button>
+  <p>{{ausgabe}}</p>
+  <p>{{button}}</p>
+</ion-content>

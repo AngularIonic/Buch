@@ -1,0 +1,6 @@
+.spinner svg {
+  width: 64px;
+  height: 64px;
+  stroke: #000;
+  fill: #fff
+}

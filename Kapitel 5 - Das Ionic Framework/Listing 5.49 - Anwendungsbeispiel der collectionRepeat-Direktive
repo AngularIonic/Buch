@@ -1,0 +1,20 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Die Listeneinträge
+    $scope.liste = [];
+    var i = 0;
+
+    for (i; i < 1000; i = i + 1) {
+      $scope.liste.push('Eintrag ' + (i + 1));
+    }
+  }
+]);
+...
+<ion-content ng-controller="meinController" padding="true">
+  <ion-list>
+    <ion-item collection-repeat="eintrag in liste" item-width="48%" item-height="20%">
+      {{eintrag}}
+    </ion-item>
+  </ion-list>
+</ion-content>

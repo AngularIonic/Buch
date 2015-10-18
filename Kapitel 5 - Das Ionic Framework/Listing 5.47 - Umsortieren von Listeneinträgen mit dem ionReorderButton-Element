@@ -1,0 +1,26 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Initial Sortierung deaktivieren
+    $scope.aktiviereSortierung = false;
+    // Die Listeneinträge
+    $scope.liste = ["Eintrag 1", "Eintrag 2", "Eintrag 3", "Eintrag 4", "Eintrag 5", "Eintrag 6"];
+    // Eintrag umsortieren
+    $scope.verschiebe = function (eintrag, ausgangsIndex, zielIndex) {
+      // entferne Eintrag von Ausgangsposition
+      $scope.liste.splice(ausgangsIndex, 1);
+      // füge Eintrag wieder hinzu
+      $scope.liste.splice(zielIndex, 0, eintrag);
+    };
+  }
+]);
+...
+<ion-content ng-controller="meinController" padding="true">
+  <button ng-click="aktiviereSortierung = !aktiviereSortierung" class="button button-balanced">Sortieren</button>
+  <ion-list show-reorder="aktiviereSortierung">
+    <ion-item ng-repeat="eintrag in liste">
+      <ion-reorder-button on-reorder="verschiebe(eintrag, $fromIndex, $toIndex)" class="ion-navicon"></ion-reorder-button>
+      {{eintrag}}
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,27 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  function ($scope, $timeout) {
+    // Die Listeneinträge
+    $scope.liste = ["Eintrag 1", "Eintrag 2", "Eintrag 3", "Eintrag 4", "Eintrag 5", "Eintrag 6"];
+
+    // Eintrag ändern
+    $scope.aktualisieren = function () {
+      $scope.liste.unshift("Neu!");
+      // Simuliere Asynchronität
+      $timeout(function () {
+        $scope.$broadcast("scroll.refreshComplete");
+      }, 1000);
+    };
+  }
+]);
+...
+<ion-content ng-controller="meinController" padding="true">
+  <ion-refresher pulling-text="Aktualisieren..." on-refresh="aktualisieren()">
+  </ion-refresher>
+  <ion-list delegate-handle="meineListe">
+    <ion-item ng-repeat="eintrag in liste">
+      {{eintrag}}
+    </ion-item>
+  </ion-list>
+</ion-content>

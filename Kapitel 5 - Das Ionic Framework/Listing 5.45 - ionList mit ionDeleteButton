@@ -1,0 +1,11 @@
+<ion-list show-delete="true">
+  <!-- Listeneinträge -->
+  <ion-item>
+    <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+    Eintrag 1
+  </ion-item>
+  <ion-item>
+    <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+    Eintrag 2
+  </ion-item>
+</ion-list>

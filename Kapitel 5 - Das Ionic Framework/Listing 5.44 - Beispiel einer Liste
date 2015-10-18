@@ -1,0 +1,5 @@
+<ion-list>
+  <!-- Listeneinträge -->
+  <ion-item>Eintrag 1</ion-item>
+  <ion-item>Eintrag 2</ion-item>
+</ion-list>

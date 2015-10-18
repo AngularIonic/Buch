@@ -1,0 +1,8 @@
+<ion-slide-box>
+  <ion-slide>
+    <b>Mein erster Slide</b>
+  </ion-slide>
+  <ion-slide>
+    <p>Mein zweiter Slide</p>
+  </ion-slide>
+</ion-slide-box>

@@ -1,0 +1,27 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Initial Löschen-Knöpfe verstecken
+    $scope.zeigeLoesch = false;
+
+    // Die Listeneinträge
+    $scope.liste = ["Eintrag 1", "Eintrag 2", "Eintrag 3", "Eintrag 4", "Eintrag 5", "Eintrag 6"];
+    // Eintrag entfernen
+    $scope.loesche = function (index) {
+      $scope.liste.splice(index, 1);
+    };
+  }
+]);
+...
+<ion-content ng-controller="meinController" padding="true">
+  <button ng-click="showDelete = !showDelete" class="button button-assertive">
+    Löschen?
+  </button>
+  <ion-list show-delete="showDelete">
+    <ion-item ng-repeat="eintrag in liste">
+      <ion-delete-button ng-click="loesche($index)" class="ion-minus-circled">
+      </ion-delete-button>
+      {{eintrag}}
+    </ion-item>
+  </ion-list>
+</ion-content>

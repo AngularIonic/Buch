@@ -1,0 +1,18 @@
+meineApp.constant("$ionicLoadingConfig", {
+  template: "<b>Ich lade, lade, lade ...</b>",
+  duration: 5000
+});
+meineApp.controller("meinController", [
+  "$scope",
+  "$ionicLoading",
+  function ($scope, $ionicLoading) {
+    // Lade-Overlay anzeigen
+    $scope.zeigeLadeLayer = function () {
+      $ionicLoading.show();
+    };
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <button ng-click="zeigeLadeLayer()" class="button">Laden</button>
+</ion-content>

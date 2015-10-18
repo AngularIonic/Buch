@@ -1,0 +1,7 @@
+<ion-content padding="true" ng-init="test = 2">
+  <ion-radio name="radio1" ng-model="test" value="1">Funktion 1</ion-radio>
+  <ion-radio name="radio1" ng-model="test" value="2">Funktion 2</ion-radio>
+  <br />
+  <input type="radio" name="radio2"><label>Funktion 3</label><br />
+  <input type="radio" name="radio2" checked="checked"><label>Funktion 4</label>
+</ion-content>

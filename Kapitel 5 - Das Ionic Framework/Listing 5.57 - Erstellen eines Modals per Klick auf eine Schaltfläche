@@ -1,0 +1,52 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$ionicModal",
+  function ($scope, $ionicModal) {
+    // Erstelle Modal
+    $ionicModal.fromTemplateUrl('meinModalTemplate.html', {
+      scope: $scope
+    }).then(function (modal) {
+      $scope.modal = modal;
+    });
+
+    // Zeige Modal an
+    $scope.modalAnzeigen = function () {
+      $scope.modal.show().then(function () {
+        $scope.offen = true;
+      });
+    };
+
+    // Schließe Modal
+    $scope.modalSchliessen = function () {
+      $scope.modal.hide().then(function () {
+        $scope.offen = false;
+      });
+    };
+    // Höre auf modal.shown-Event
+    $scope.$on("modal.shown", function (event, modal) {
+      $scope.meinModal = modal;
+    });
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <button class="button button-calm" ng-click="modalAnzeigen()">Zeige Modal</button>
+</ion-content>
+
+<script id="meinModalTemplate.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <div class="buttons">
+        <button class="button button-clear ion-close" ng-click="modalSchliessen()">
+        </button>
+      </div>
+      <h1 class="title">Mein Modal</h1>
+    </ion-header-bar>
+    <ion-content>
+      Der Modal:<br />
+      <p ng-show="offen">
+        {{meinModal}}
+      </p>
+    </ion-content>
+  </ion-modal-view>
+</script>

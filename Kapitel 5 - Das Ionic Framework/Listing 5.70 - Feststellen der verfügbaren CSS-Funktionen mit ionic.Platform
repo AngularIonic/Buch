@@ -1,0 +1,18 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    ionic.Platform.ready(function () {
+      $scope.geraet = ionic.Platform.device();
+      $scope.einstufung = ionic.Platform.grade;
+      $scope.plattformen = ionic.Platform.platforms;
+    });
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <p ng-if="einstufung === 'a'">Beste CSS-Unterstützung!</p>
+  <p ng-if="einstufung === 'b'">Mittlere CSS-Unterstützung!</p>
+  <p ng-if="einstufung === 'c'">Schlechteste CSS-Unterstützung!</p>
+  <p>{{geraet}}</p>
+  <p>{{plattformen}}</p>
+</ion-content>

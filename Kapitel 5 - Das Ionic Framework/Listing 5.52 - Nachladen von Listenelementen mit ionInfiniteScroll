@@ -1,0 +1,38 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  function ($scope, $timeout) {
+    // Die Listeneinträge
+    $scope.liste = [];
+
+    // Einträge nachladen
+    $scope.nachLaden = function () {
+      // Setze Zählvariable
+      var i = $scope.liste.length,
+          limit = i + 20;
+
+      // Simuliere Asynchronität
+      $timeout(function () {
+        // Füge 20 weitere Einträge hinzu
+        for (i; i < limit; i = i + 1) {
+          $scope.liste.push("Eintrag " + (i + 1));
+        }
+        $scope.$broadcast("scroll.infiniteScrollComplete");
+      }, 1000);
+    };
+  }
+]);
+...
+<ion-content ng-controller="meinController" padding="true">
+  <ion-list delegate-handle="meineListe">
+    <ion-item ng-repeat="eintrag in liste">
+      {{eintrag}}
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll
+    on-infinite="nachLaden()"
+    distance="10%"
+    ng-if="liste.length < 200"
+  >
+  </ion-infinite-scroll>
+</ion-content>

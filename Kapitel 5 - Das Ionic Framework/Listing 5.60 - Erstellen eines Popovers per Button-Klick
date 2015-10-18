@@ -1,0 +1,49 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$ionicPopover",
+  function ($scope, $ionicPopover) {
+    // Erzeuge Popover
+    $ionicPopover.fromTemplateUrl("meinPopover.html", {
+      scope: $scope
+    }).then(function (popover) {
+      $scope.popover = popover;
+    });
+    // Popover anzeigen
+    $scope.zeigePopover = function ($event) {
+      $scope.geschlossen = false;
+      // Zeige Popover ausgerichtet an Schaltfläche an
+      $scope.popover.show($event).then(function () {
+        $scope.offen = true;
+      });
+    };
+    // Popover schließen
+    $scope.schliessePopover = function () {
+      $scope.offen = false;
+      $scope.popover.hide();
+    };
+    // Höre auf Popover-Event
+    $scope.$on("popover.hidden", function (event, popover) {
+      $scope.geschlossen = true;
+    });
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <button ng-click="zeigePopover($event)" class="button">Popover</button>
+  <p ng-if="geschlossen">Popover wurde geschlossen!</p>
+</ion-content>
+
+<script id="meinPopover.html" type="text/ng-template">
+  <ion-popover-view>
+    <ion-header-bar>
+      <div class="buttons">
+        <button class="button ion-close" ng-click="schliessePopover()"></button>
+      </div>
+      <h1 class="title">Mein tolles Popover</h1>
+    </ion-header-bar>
+    <ion-content>
+      Huhu!
+      <p ng-show="offen">Popover geöffnet!</p>
+    </ion-content>
+  </ion-popover-view>
+</script>

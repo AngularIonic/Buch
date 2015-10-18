@@ -1,0 +1,2 @@
+<ion-toggle>Funktion 1</ion-toggle>
+<ion-toggle ng-checked="true">Funktion 2</ion-toggle>

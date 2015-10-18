@@ -1,0 +1,25 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  "$ionicBackdrop",
+  function ($scope, $timeout, $ionicBackdrop) {
+    // Backdrop anzeigen
+    $scope.zeigeBackdrop = function () {
+      // 2-Mal anfordern
+      $ionicBackdrop.retain();
+      $ionicBackdrop.retain();
+      // 1. Mal freigeben
+      $timeout(function () {
+        $ionicBackdrop.release();
+      }, 1000);
+      // 2. Mal freigeben
+      $timeout(function () {
+        $ionicBackdrop.release();
+      }, 5000);
+    };
+  }
+]);
+...
+<ion-content padding="true" ng-controller="meinController">
+  <button ng-click="zeigeBackdrop()" class="button">Abdunkeln!</button>
+</ion-content>

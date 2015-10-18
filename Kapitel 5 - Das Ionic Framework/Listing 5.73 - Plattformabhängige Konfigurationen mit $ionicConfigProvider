@@ -1,0 +1,8 @@
+// Android Seitenübergang
+$ionicConfigProvider.platform.default.views.transition('android');
+$ionicConfigProvider.platform.android.views.transition('android');
+$ionicConfigProvider.platform.ios.views.transition('android');
+// Titel in Navigationsleiste ausrichten
+$ionicConfigProvider.platform.default.navBar.alignTitle('left');
+$ionicConfigProvider.platform.android.navBar.alignTitle('left');
+$ionicConfigProvider.platform.ios.navBar.alignTitle('left');

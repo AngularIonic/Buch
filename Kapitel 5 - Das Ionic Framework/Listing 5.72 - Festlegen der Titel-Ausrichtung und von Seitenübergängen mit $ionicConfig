@@ -1,0 +1,41 @@
+meineApp.config([
+  "$ionicConfigProvider",
+  "$stateProvider",
+  "$urlRouterProvider",
+  function ($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
+    // Android Seitenübergang
+    $ionicConfigProvider.views.transition('android');
+    // Titel in Navigationsleiste ausrichten
+    $ionicConfigProvider.navBar.alignTitle('left');
+    $urlRouterProvider.otherwise("start");
+    $stateProvider.state("start", {
+      url: "/start",
+      templateUrl: "startTemplate.html"
+    })
+    .state("zweiter", {
+      url: "/zweiter",
+      templateUrl: "zweitesTemplate.html"
+    });
+  }
+]);
+...
+<ion-nav-bar>
+</ion-nav-bar>
+<ion-nav-view></ion-nav-view>
+<script id="startTemplate.html" type="text/ng-template">
+  <ion-view>
+    <ion-nav-title>Start!</ion-nav-title>
+    <ion-content>
+      <a ui-sref="zweiter">Zweiter Zustand</a>
+    </ion-content>
+  </ion-view>
+</script>
+
+<script id="zweitesTemplate.html" type="text/ng-template">
+  <ion-view>
+    <ion-nav-title>Zweites!</ion-nav-title>
+    <ion-content>
+      <a ui-sref="start">Start Zustand</a>
+    </ion-content>
+  </ion-view>
+</script>
