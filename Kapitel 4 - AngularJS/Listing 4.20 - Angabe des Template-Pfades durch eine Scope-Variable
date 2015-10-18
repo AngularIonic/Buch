@@ -1,0 +1,10 @@
+...
+// $scope-Variable mit Dateipfad
+$scope.variableMitPfadZurDatei = "pfadZurDatei.html";
+...
+<!-- als DOM-Knoten -->
+<ng-include src="variableMitPfadZurDatei">
+<!-- als Attribut -->
+<div ng-include="variableMitPfadZurDatei"></div>
+<!-- als Klasse -->
+<div class="ng-include: variableMitPfadZurDatei;"></div>

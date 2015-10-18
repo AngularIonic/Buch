@@ -1,0 +1,7 @@
+// Erzeugung des Moduls
+var meineApp = angular.module(“meineErsteApp”, []);
+// Warten, bis der DOM-Knoten verfügbar ist
+angular.element(document.body).ready(function () {
+  // Starten der Anwendung
+  angular.bootstrap(document.body, ["meineErsteApp"]);
+});

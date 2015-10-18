@@ -1,0 +1,13 @@
+.when("/test/:id", {
+  controller: “meinZweiterController”,
+  template: "<p>Eine weitere Route mit ID {{id}}</p>" // Inhalt des Templates
+});
+...
+meineApp.controller("meinZweiterController", [
+  "$scope",
+  "$route",
+  function ($scope, $route) {
+    // Auslesen des Routen-Parameters id
+    $scope.id = $route.current.params.id;
+  }
+]);

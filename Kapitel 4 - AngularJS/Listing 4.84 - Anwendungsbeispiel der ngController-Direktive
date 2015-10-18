@@ -1,0 +1,7 @@
+meineApp.controller(“meinErsterController”, function ($scope) {
+  // Befüllen des $scope
+});
+...
+<!-- Verknüpfung von div und meinErsterController -->
+<div ng-controller="meinErsterController">
+</div>

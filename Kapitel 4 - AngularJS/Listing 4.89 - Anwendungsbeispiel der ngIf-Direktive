@@ -1,0 +1,14 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    $scope.checker = true;
+    $scope.setzeChecker = function () {
+      $scope.checker = !$scope.checker;
+    };
+  }
+]);
+...
+<div ng-controller="meinController">
+  <button ng-click="setzeChecker()" ng-if="checker">wahr</button>
+  <button ng-click="setzeChecker()" ng-if="!checker">falsch</button>
+</div>

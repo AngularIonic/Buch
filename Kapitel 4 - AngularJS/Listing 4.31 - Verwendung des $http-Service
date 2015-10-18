@@ -1,0 +1,9 @@
+meineApp.service("meinService", [
+  "$http",
+  function ($http) {
+    // Inhalt des Services
+    this.anfrage = function () {
+      return $http.get("http://google.de/");
+    };
+  }
+]);

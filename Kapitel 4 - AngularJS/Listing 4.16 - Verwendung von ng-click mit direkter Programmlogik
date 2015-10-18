@@ -1,0 +1,2 @@
+<!-- Button führt eigenen Ausdruck aus -->
+<button ng-click="meineErsteVariable = ‘Hallo Ihr da!'">klick mich auch</button>

@@ -1,0 +1,11 @@
+meineApp.config(["$routeProvider", function ($routeProvider) {
+  // Routen definieren
+  $routeProvider
+    .when("/start", {
+      controller: "meinErsterController",
+      templateUrl: "templates/meinErstesTemplate.html" // Pfad zum Template
+    })
+    .when("/test", {
+      template: "<p>Test</p>" // Definition des Templates
+    });
+}]);

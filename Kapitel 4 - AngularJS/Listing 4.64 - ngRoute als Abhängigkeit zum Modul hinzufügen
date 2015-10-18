@@ -1,0 +1,2 @@
+// Erzeugung des Moduls
+var meineApp = angular.module("meineErsteApp", ["ngRoute"]);

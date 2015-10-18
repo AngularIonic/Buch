@@ -1,0 +1,6 @@
+<div ng-controller="meinErsterController">
+  <meine-direktive></meine-direktive>
+  <p meine-direktive></p>
+  <p class="meine-direktive"></p>
+  {{meinWert + "!"}}
+</div>

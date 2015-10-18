@@ -1,0 +1,8 @@
+meineApp.directive("meineDirektive", function () {
+  // Inhalt der Direktive
+  return function (scope, element, attrs) {
+    scope.warum = "darum";
+  };
+});
+...
+<meine-direktive>Der Inhalt sollte erhalten bleiben :) {{warum}}</meine-direktive>

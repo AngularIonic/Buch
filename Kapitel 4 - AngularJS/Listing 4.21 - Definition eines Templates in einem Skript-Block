@@ -1,0 +1,4 @@
+<script type="text/ng-template" id="meinTemplate.html">
+  Mein Template
+</script>
+<ng-include src="'meinTemplate.html'"></ng-include>

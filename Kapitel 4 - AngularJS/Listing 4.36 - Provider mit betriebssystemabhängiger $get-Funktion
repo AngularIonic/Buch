@@ -1,0 +1,38 @@
+// Ein Provider für die Anwendung
+meineApp.provider("test", function () {
+  // Der Inhalt des Providers
+  var meinePlattform = "ios";
+ 
+  return {
+    // Funktion im config-Block verfügbar
+    setzePlattform: function (plattform) {
+      meinePlattform = plattform;
+    },
+    // Die Pflichtfunktion $get
+    $get: function () {
+      return {
+        "unternehmen": function () {
+          if (meinePlattform === "ios") {
+            return "Apple";
+          }
+          return "Google";
+        }
+      };
+    }
+  };
+});
+meineApp.config([
+  // Hier könnten Abhängigkeiten, z.B. zu Providern, stehen
+  "testProvider",
+  function (testProvider) {
+    // Inhalt der Konfiguration
+    testProvider.setzePlattform("android");
+  }
+]);
+meineApp.controller([
+  “$scope”,
+  "test",
+  function ($scope, test) {
+    $scope.plattformUnternehmen = test.unternehmen();
+  }
+]);

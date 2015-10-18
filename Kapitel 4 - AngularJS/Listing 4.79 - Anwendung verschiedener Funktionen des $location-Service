@@ -1,0 +1,14 @@
+// Adresse in der Browser-Adressleiste
+http://localhost:8000/test.html#/test/1?test=Hallo
+// $location.path()
+/test/1
+// $location.url()
+/test/1?test=hallo
+// $location.absUrl()
+http://localhost:8000/test.html#/test/1?test=Hallo
+// $location.host()
+localhost
+// $location.port()
+8000
+// $location.protocol()
+http

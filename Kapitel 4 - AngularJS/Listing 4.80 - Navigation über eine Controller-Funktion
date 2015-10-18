@@ -1,0 +1,16 @@
+meineApp.controller("meinErsterController", [
+  "$scope",
+  "$location",
+  function ($scope, $location) {
+    // Befüllen des $scope
+    $scope.meinWert = "Hallo";
+    $scope.geheZuTest = function () {
+      $location.path("/test/2");
+    };
+  }
+]);
+...
+<div>
+  {{meinWert}}
+  <button ng-click="geheZuTest()">Auf zur Unterseite!</button>
+</div>

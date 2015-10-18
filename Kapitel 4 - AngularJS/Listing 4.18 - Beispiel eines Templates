@@ -1,0 +1,11 @@
+<!-- Verknüpfung von body-Tag mit dem Modul →
+<body ng-app="meineErsteApp">
+  <!-- Verknüpfung von div und meinErsterController -->
+  <div ng-controller="meinErsterController">
+    {{meineErsteVariable + "!"}}
+    <!-- Button ruft beim Klick $scope.klickMich('Hallo Welt') auf -->
+    <button ng-click="klickMich('Hallo Welt')">klick Mich</button>
+    <!-- Button führt eigenen Ausdruck aus -->
+    <button ng-click="meineErsteVariable = 'Hallo Ihr da'">klick mich auch</button>
+  </div>
+</body>

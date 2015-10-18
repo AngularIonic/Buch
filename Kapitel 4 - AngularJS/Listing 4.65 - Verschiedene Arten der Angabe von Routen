@@ -1,0 +1,6 @@
+// Einfache Route
+/start
+// Route mit einem Parameter
+/start/:param1
+// Route mit komplexer Struktur
+/start/:param1/test/:param2

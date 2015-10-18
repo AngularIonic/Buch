@@ -1,0 +1,8 @@
+<meine-direktive mein-wert-ist="meinWert">
+  Der Inhalt sollte erhalten bleiben :)
+</meine-direktive>
+...
+// Isolierter Scope
+scope: {
+  meinWert: "=?meineWertIst"
+},

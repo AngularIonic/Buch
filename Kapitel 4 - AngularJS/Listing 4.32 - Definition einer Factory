@@ -1,0 +1,3 @@
+meineApp.factory("meineFactory", function () {
+  // Inhalt der Factory
+});

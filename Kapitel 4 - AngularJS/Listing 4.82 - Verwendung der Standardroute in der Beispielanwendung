@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+    </script>
+    <!-- Einbinden von ngRoute -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js">
+    </script>
+    <script type="text/javascript">
+      // Erzeugung des Moduls
+      var meineApp = angular.module("meineErsteApp", ["ngRoute"]);
+      meineApp.controller("meinErsterController", [
+        "$scope",
+        "$location",
+        function ($scope, $location) {
+          // Befüllen des $scope
+          $scope.meinWert = "Hallo";
+          $scope.geheZuTest = function () {
+            $location.path("/test/2");
+          };
+        }
+      ]);
+      meineApp.controller("meinZweiterController", [
+        "$scope",
+        "$routeParams",
+        function ($scope, $routeParams) {
+          // Befüllen des $scope
+          $scope.id = $routeParams.id;
+        }
+      ]);
+      meineApp.config(["$routeProvider", function ($routeProvider) {
+        // Definition von Routen
+        $routeProvider
+          .when("/start", {
+            controller: "meinErsterController",
+            templateUrl: "templates/meinErstesTemplate.html" // Pfad zum Template
+          })
+          .when("/test/:id", {
+            controller: "meinZweiterController",
+            template: "<p>Eine weitere Route mit ID {{id}} <a ng-href='#/start'>Zur Startseite</a></p>" // Inhalt des Templates
+          })
+          .otherwise("/start");
+      }]);
+    </script>
+  </head>
+  <!-- Verknüpfung von body-Tag mit dem Modul -->
+  <body ng-app="meineErsteApp">
+    <ng-view></ng-view>    
+  </body>
+</html>
+
+<!-- templates/meinErstesTemplate.html -->
+<div>
+  {{meinWert}}
+  <button ng-click="geheZuTest()">Auf zur Unterseite!</button>
+  <a ng-href="#/test/1">Zur Unterseite</a>
+</div>

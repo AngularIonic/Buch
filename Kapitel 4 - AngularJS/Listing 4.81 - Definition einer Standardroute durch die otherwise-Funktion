@@ -1,0 +1,6 @@
+// Start-Route wird Standardroute
+.otherwise("/start");
+// Neue Route wird Standardroute
+.otherwise("/ansonsten", {
+  template: "Ungültige URL"
+});

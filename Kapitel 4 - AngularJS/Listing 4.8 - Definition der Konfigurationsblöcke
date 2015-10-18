@@ -1,0 +1,9 @@
+meineApp.config(function () {
+  // Inhalt der Konfiguration
+});
+meineApp.config([
+  // Hier könnten Abhängigkeiten, z.B. zu Providern, stehen
+  function () {
+    // Inhalt der Konfiguration
+  }
+]);

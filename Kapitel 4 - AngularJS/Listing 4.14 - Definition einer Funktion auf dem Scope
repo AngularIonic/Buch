@@ -1,0 +1,4 @@
+// Ändern der Variable
+$scope.klickMich = function (neuerWert) {
+  $scope.meineErsteVariable = neuerWert;
+};

@@ -1,0 +1,3 @@
+meineApp.config([“$routeProvider”, function ($routeProvider) {
+  // Routen können definiert werden
+}]);

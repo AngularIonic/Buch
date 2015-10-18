@@ -1,0 +1,16 @@
+meineApp.config(["$routeProvider", function ($routeProvider) {
+  // Definition von Routen
+  $routeProvider
+    .when("/start", {
+      controller: "meinErsterController",
+      templateUrl: "templates/meinErstesTemplate.html" // Pfad zum Template
+    })
+    .when("/test", {
+      template: "<p>Eine weitere Route</p>" // Inhalt des Templates
+    });
+}]);
+
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp">
+  <ng-view></ng-view>
+</body>

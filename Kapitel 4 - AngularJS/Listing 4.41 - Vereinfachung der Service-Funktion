@@ -1,0 +1,6 @@
+// Service
+function service(name, constructor) {
+  return factory(name, function () {
+    return new construcor();
+  });
+}

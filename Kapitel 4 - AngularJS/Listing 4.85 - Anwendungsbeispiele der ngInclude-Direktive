@@ -1,0 +1,12 @@
+<!-- als DOM-Knoten -->
+<ng-include src="'pfadZurDatei.html'">
+<!-- als Attribut -->
+<div ng-include="'pfadZurDatei.html'"></div>
+<!-- als Klasse -->
+<div class="ng-include: 'pfadZurDatei.html';"></div>
+
+<!-- Template Script-Block -->
+<script type="text/ng-template" id="meinTemplate.html">
+  Mein Template
+</script>
+<ng-include src="'meinTemplate.html'"></ng-include>

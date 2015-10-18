@@ -1,0 +1,4 @@
+// Isolierter Scope
+scope: {
+  meinWert: "=?"
+},

@@ -1,0 +1,4 @@
+meineApp.directive("meineDirektive", function () {
+  // Inhalt der Direktive
+  return {};
+});

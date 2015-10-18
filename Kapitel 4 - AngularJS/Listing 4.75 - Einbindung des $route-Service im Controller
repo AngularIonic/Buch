@@ -1,0 +1,8 @@
+meineApp.controller("meinErsterController", [
+  "$scope",
+  "$route",
+  function ($scope, $route) {
+    // Befüllen des $scope
+    $scope.meinWert = "Hallo";
+  }
+]);

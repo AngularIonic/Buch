@@ -1,0 +1,6 @@
+meineApp.run([
+  "$rootScope",
+  function ($rootScope) {
+    $rootScope.appStart = true;
+  }
+]);

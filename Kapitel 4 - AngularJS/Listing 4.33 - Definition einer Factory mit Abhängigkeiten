@@ -1,0 +1,11 @@
+meineApp.factory("meineFactory", [
+  "$http",
+  function ($http) {
+    // Inhalt der Factory
+    return {
+      anfrage: function () {
+        return $http.get("http://google.de/")
+      }
+    };
+  }
+]);

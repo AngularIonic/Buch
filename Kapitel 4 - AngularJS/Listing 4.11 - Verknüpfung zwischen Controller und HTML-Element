@@ -1,0 +1,3 @@
+<!-- Verknüpfung von div und meinErsterController -->
+<div ng-controller="meinErsterController">
+</div>

@@ -1,0 +1,6 @@
+function meineKlasse() {
+}
+meineKlasse.prototype.eigenschaft = "Vererbbare Eigenschaft";
+
+// Neues Objekt
+var meinObjekt = new meineKlasse();

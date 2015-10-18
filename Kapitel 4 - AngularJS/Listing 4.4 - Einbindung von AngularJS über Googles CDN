@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von AngularJS -->
+    <script src="https//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+meineApp.config(["$provide", function ($provide) {
+  $provide.factory("meineFactory", function () {
+    return {
+      "tolleFunktion": function () {
+         return "toll";
+       }
+    }
+  });
+});

@@ -1,0 +1,4 @@
+// Ein Provider für die Anwendung
+meineApp.provider("meinErsterProvider", function () {
+  // Der Inhalt des Providers
+});

@@ -1,0 +1,6 @@
+meineApp.value("grussValue", "Hallo");
+meineApp.config(["$provide", function ($provide) {
+  $provide.decorator("grussValue", function ($delegate) {
+    $delegate = $delegate + " Du!";
+  });
+});

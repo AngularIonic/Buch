@@ -1,0 +1,15 @@
+meineApp.controller("meinErsterController", [
+  "$scope",
+  function ($scope) {
+    // Befüllen des $scope
+    $scope.meinWert = "Hallo";
+    $scope.setzeWert = function () {
+      $scope.meinWert = "Hallo Du";
+    };
+  }
+]);
+...
+<div>
+  {{meinWert}}
+  <button ng-click="setzeWert()">Neuer Wert</button>
+</div>

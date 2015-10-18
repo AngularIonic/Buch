@@ -1,0 +1,7 @@
+$scope.meineVariable = "test"; // Initialisierung → Angular setzt Watcher darauf
+document.addEventListener("click", function () {
+  // Änderungen nicht im AngularJS-Kontext → wird nicht erkannt
+  $scope.meineVariable = "test";
+  // Startet Aktualisierung → ruft $rootScope.$digest() auf
+  $scope.$apply();
+});

@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  // Variable wird initialisiert
+  var hallo = "Hallo";
+  // Eigene Funktion, die "Hallo" ausgibt
+  function alertHallo() {
+    alert(hallo);
+  }
+  // Eigene Funktion mit eigener hallo-Variablen
+  function alertEigenesHallo() {
+    // Eigene Variable wird initialisiert
+    var hallo = "Hi";
+    alert(hallo);
+  }
+  alert(hallo);
+  alertHallo();
+  alertEigenesHallo();
+</script>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+    </script>
+    <script type="text/javascript">
+      // Erzeugung des Moduls
+      var meineApp = angular.module("meineErsteApp", []);
+      meineApp.controller("meinController", [
+        "$scope",
+        function ($scope) {
+          // Indikator, um Klasse anzuwenden oder nicht
+          $scope.klasse = true;
+          // Klassenname auf dem $scope
+          $scope.klassenName = "meine-klasse";
+          // Klassen entfernen oder hinzufügen
+          $scope.setzeKlasse = function () {
+            $scope.klasse = !$scope.klasse;
+          };
+        }
+      ]);
+    </script>
+    <style>
+      /* Kleines Styling der Testklasse */
+      .meine-klasse {
+        background-color: #000;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <!-- Verknüpfung von body-Tag mit dem Modul -->
+  <body ng-app="meineErsteApp">
+    <div ng-controller="meinController">
+      <!-- Ein Klassenname -->
+      <div ng-class="'meine-klasse'"></div>
+      <!-- Ein Klassenname aus Variable -->
+      <div ng-class="klassenName"></div>
+      <!-- If-Bedingung, die Klassenname zurückgibt -->
+      <div ng-class="klasse ? klassenName : 'nichts'"></div>
+      <!-- Objekt mit Klassenzuordnung -->
+      <div ng-class="{'meine-klasse': klasse}"></div>
+      <!-- Liste mit Klassenname und Objekt -->
+      <div ng-class="['noch-eine-klasse und-noch-eine', {'meine-klasse': klasse}]"></div>
+      <!-- Verwendung von ngClass im class-Attribut -->
+      <div class="ng-class: 'meine-klasse';"></div>
+      <!-- Funktion, um Klasse zu entfernen oder hinzuzufügen -->
+      <button ng-click="setzeKlasse()">setze Klasse</button>
+    </div>
+  </body>
+</html>

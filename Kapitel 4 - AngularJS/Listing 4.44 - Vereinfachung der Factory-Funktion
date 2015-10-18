@@ -1,0 +1,6 @@
+// Factory
+function factory(name, factoryFn) {
+  return provider(name, {
+    $get: factoryFn
+  });
+}

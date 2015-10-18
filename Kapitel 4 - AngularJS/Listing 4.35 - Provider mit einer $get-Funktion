@@ -1,0 +1,12 @@
+// Ein Provider für die Anwendung
+meineApp.provider("test", function () {
+  // Der Inhalt des Providers
+  return {
+    // Die Pflichtfunktion $get
+    $get: function () {
+      return {
+        "eigenschaft": "Test123"
+      };
+    }
+  };
+});

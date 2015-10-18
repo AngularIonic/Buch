@@ -1,0 +1,16 @@
+meineApp.controller("meinErsterController", [
+  "$scope",
+  "$rootScope",
+  "meineKonstante",
+  function ($scope, $rootScope, meineKonstante) {
+    // Befüllen des $scope
+    $scope.meineErsteVariable = "Hallo";
+    // Befüllen des $rootScope
+    $rootScope.globalSichtbar = "Ich bin überall sichtbar!";
+    // Ändern der Variablen
+    $scope.klickMich = function (neuerWert) {
+      $scope.meineErsteVariable = neuerWert;
+    };
+    $scope.meineKonstante = meineKonstante;
+  }
+]);

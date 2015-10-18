@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+    </script>
+    <script type="text/javascript">
+      // Erzeugung des Moduls
+      var meineApp = angular.module(“meineErsteApp”, []);
+      meineApp.controller(“meinErsterController”, [
+        “$scope”,
+        “$rootScope”,
+        function ($scope, $rootScope) {
+          // Befüllen des $scope
+          $scope.meineErsteVariable = "Hallo";
+          // Befüllen des $rootScope
+          $rootScope.globalSichtbar = "Ich bin überall sichtbar!";
+          // Ändern der Variablen
+          $scope.klickMich = function (neuerWert) {
+            $scope.meineErsteVariable = neuerWert;
+          };
+        }
+      ]);
+    </script>
+  </head>
+  <!-- Verknüpfung von body-Tag mit dem Modul -->
+  <body ng-app="meineErsteApp">
+    <!-- Verknüpfung von div und meinErsterController -->
+    <div ng-controller="meinErsterController">
+      {{meineErsteVariable + "!"}}
+      <!-- Button ruft beim Klick $scope.klickMich('Hallo Welt') auf -->
+      <button ng-click="klickMich('Hallo Welt')">klick Mich</button>
+      <!-- Button führt eigenen Ausdruck aus -->
+      <button ng-click="meineErsteVariable = 'Hallo Ihr da'">
+        klick mich auch
+      </button>
+    </div>
+    {{globalSichtbar}}
+  </body>
+</html>

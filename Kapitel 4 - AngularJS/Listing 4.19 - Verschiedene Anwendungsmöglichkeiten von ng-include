@@ -1,0 +1,6 @@
+<!-- als DOM-Knoten -->
+<ng-include src="'pfadZurDatei.html'">
+<!-- als Attribut -->
+<div ng-include="'pfadZurDatei.html'"></div>
+<!-- als Klasse -->
+<div class="ng-include: 'pfadZurDatei.html';"></div>

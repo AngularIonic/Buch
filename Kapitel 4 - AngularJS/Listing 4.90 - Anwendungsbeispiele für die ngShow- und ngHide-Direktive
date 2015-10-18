@@ -1,0 +1,4 @@
+<div ng-controller="meinController">
+  <button ng-click="setzeChecker()" ng-show="checker">wahr</button>
+  <button ng-click="setzeChecker()" ng-hide="checker">falsch</button>
+</div>

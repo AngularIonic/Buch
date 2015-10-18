@@ -1,0 +1,9 @@
+meineApp.directive("meineDirektive", function () {
+  // Inhalt der Direktive
+  return {
+    // Direktive kann als Element, Attribut und CSS-Klasse verwendet werden
+    restrict: "AEC",
+    // Ein eigenes Template
+    template: "<p>Meine tolle Direktive</p>"
+  };
+});

@@ -1,0 +1,6 @@
+<!-- Als HTML-Tag -->
+<ng-view></ng-view>
+<!-- Als Attribut -->
+<div ng-view></div>
+<!-- Als Klasse -->
+<div class="ng-view"></div>

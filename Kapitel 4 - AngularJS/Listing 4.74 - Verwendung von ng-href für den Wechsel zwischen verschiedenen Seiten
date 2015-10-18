@@ -1,0 +1,6 @@
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp">
+  <ng-view></ng-view>
+  <a ng-href="#/start">Zur Startseite</a>
+  <a ng-href="#/test">Zur Unterseite</a>
+</body>

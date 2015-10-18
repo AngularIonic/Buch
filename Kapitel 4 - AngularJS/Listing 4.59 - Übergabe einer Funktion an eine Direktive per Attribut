@@ -1,0 +1,36 @@
+// Controller
+meineApp.controller("meinErsterController", [
+  "$scope",
+  function ($scope) {
+    // Befüllen des $scope
+    $scope.meinWert = "Hallo";
+    // Funktion auf $scope
+    $scope.setzeWert = function (neuerWert) {
+      $scope.meinWert = neuerWert;
+    };
+  }
+]);
+
+<!-- Controller-Funktion wird weitergegeben -->
+<meine-direktive setze-wert="setzeWert(neuerWert)" mein-wert="meinWert">
+  Der Inhalt sollte erhalten bleiben :)
+</meine-direktive>
+
+// Benutze Funktion in der Direktive
+meineApp.directive("meineDirektive", function () {
+  // Inhalt der Direktive
+  return {
+    // Isolierter Scope
+    scope: {
+      setzeWert: "&?",
+      meinWert: "=?"
+    },
+    // Direktive kann als Element, Attribut und CSS-Klasse verwendet werden
+    restrict: "AEC",
+    // Ein eigenes Template
+    template: "<div><p ng-transclude></p><p ng-click='setzeWert({neuerWert:\"Du da\"})'>{{meinWert}}, Meine tolle Direktive {{titel}}</p></div>",
+    // Behalte Ausgangsquellcode
+    transclude: true,
+    replace: true
+  };
+});

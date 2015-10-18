@@ -1,0 +1,8 @@
+$scope.meineVariable = "test"; // Initialisierung → Angular setzt Watcher darauf
+document.addEventListener("click", function () {
+  // Änderungen nicht im AngularJS-Kontext → wird erkannt
+  // $timeout wartet auf den nächsten $digest
+  $timeout(function () {
+    $scope.meineVariable = "test";
+  });
+});

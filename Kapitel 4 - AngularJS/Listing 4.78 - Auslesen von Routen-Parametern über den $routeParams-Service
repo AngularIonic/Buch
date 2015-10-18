@@ -1,0 +1,8 @@
+meineApp.controller("meinZweiterController", [
+  "$scope",
+  "$routeParams",
+  function ($scope, $routeParams) {
+    // Auslesen des Routen-Parameter id
+    $scope.id = $routeParams.id;
+  }
+]);

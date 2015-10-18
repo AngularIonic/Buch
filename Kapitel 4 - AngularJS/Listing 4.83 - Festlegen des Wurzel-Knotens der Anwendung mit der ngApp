@@ -1,0 +1,4 @@
+angular.module("meineApp", []);
+...
+<body ng-app="meineApp">
+</body>

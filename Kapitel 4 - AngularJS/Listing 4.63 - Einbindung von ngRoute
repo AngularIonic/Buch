@@ -1,0 +1,11 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Meine erste App</title>
+  <!-- Einbinden von AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+  </script>
+  <!-- Einbinden von ngRoute -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js">
+  </script>
+  ...
+</head>

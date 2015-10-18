@@ -1,0 +1,2 @@
+meineApp.controller("meinErsterController", [“$scope”, function ($scope) {
+}]);

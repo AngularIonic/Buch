@@ -1,0 +1,7 @@
+meineApp.directive("meineDirektive", function () {
+  // Inhalt der Direktive
+  return {
+    // Direktive kann als Element, Attribut und CSS-Klasse verwendet werden
+    restrict: "AEC"
+  };
+});

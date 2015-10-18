@@ -1,0 +1,6 @@
+// Value
+function value(name, val) {
+  return factory(name, function () {
+    return val;
+  });
+}

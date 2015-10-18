@@ -1,0 +1,20 @@
+meineApp.directive("meineDirektive", function () {
+  // Inhalt der Direktive
+  return {
+    // Isolierter Scope
+    scope: {},
+    // Direktive kann als Element, Attribut und CSS-Klasse verwendet werden
+    restrict: "AEC",
+    // Ein eigenes Template
+    template: "<p ng-transclude></p><p ng-click='entferneText()'>{{meinWert}}, Meine tolle Direktive {{titel}}</p>",
+    // Behalte Ausgangsquellcode
+    transclude: true,
+    // Logik der Direktive
+    link: function (scope, element, attributes) {
+      scope.titel = "heißt meineDirektive";
+      scope.entferneText = function () {
+        element.html("Hey Du!");
+      };
+    }
+  };
+});

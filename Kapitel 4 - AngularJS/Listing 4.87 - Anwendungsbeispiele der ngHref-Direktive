@@ -1,0 +1,2 @@
+<a ng-href="#/start">Zur Startseite</a>
+<a ng-href="#/start/{{parameter1}}">Zur Startseite</a>

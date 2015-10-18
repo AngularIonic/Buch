@@ -1,0 +1,3 @@
+meineApp.service("meinService", function () {
+  // Inhalt des Services
+});

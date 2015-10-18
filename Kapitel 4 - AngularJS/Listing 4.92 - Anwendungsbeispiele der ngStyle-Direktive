@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+    </script>
+    <script type="text/javascript">
+      // Erzeugung des Moduls
+      var meineApp = angular.module("meineErsteApp", []);
+      meineApp.controller("meinController", [
+        "$scope",
+        function ($scope) {
+          // Indikator, um Klasse anzuwenden oder nicht
+          $scope.farbe = "blue";
+          // Klassen entfernen oder hinzufügen
+          $scope.setzeFarbe = function () {
+            $scope.farbe = $scope.farbe === "blue" ? "red" : "blue";
+          };
+        }
+      ]);
+    </script>
+  </head>
+  <!-- Verknüpfung von body-Tag mit dem Modul -->
+  <body ng-app="meineErsteApp">
+    <div ng-controller="meinController">
+      <div ng-style="{'color': farbe}">Hallo</div>
+      <!-- Verwendung von ngStyle im class-Attribut -->
+      <div class="ng-style: {'color': farbe};">Du</div>
+      <!-- Funktion, um Klasse zu entfernen oder hinzuzufügen -->
+      <button ng-click="setzeFarbe()">setze Style</button>
+    </div>
+  </body>
+</html>

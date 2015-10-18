@@ -1,0 +1,3 @@
+meineApp.controller("meinErsterController", function ($scope) {
+  // Befüllen des $scope
+});
