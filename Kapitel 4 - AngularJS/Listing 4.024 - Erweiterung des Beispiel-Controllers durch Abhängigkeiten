@@ -8,10 +8,10 @@
     </script>
     <script type="text/javascript">
       // Erzeugung des Moduls
-      var meineApp = angular.module(“meineErsteApp”, []);
-      meineApp.controller(“meinErsterController”, [
-        “$scope”,
-        “$rootScope”,
+      var meineApp = angular.module("meineErsteApp", []);
+      meineApp.controller("meinErsterController", [
+        "$scope",
+        "$rootScope",
         function ($scope, $rootScope) {
           // Befüllen des $scope
           $scope.meineErsteVariable = "Hallo";
