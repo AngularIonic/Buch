@@ -1,0 +1,24 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+
+  // Standardroute definieren
+  $urlRouterProvider.otherwise("/eltern");
+ 
+  // States definieren
+  $stateProvider
+    .state("eltern", {
+      url: "/eltern",
+      template: "123<div ui-view></div>"
+    })
+    .state("eltern.kind1", {
+      url: ("/kind1"),
+      template: "<p>Test</p>"
+    })
+    .state("kind2", {
+      url: ("/kind2"),
+      parent: "eltern",
+      template: "<p>Test2</p>"
+    });
+}]);

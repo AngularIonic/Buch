@@ -1,0 +1,31 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+ 
+  // Standardroute definieren
+  $urlRouterProvider.otherwise("/start");
+
+  // States definieren
+  $stateProvider
+    .state("start", {
+      url: "/start",
+      template: "<p>{{benutzer}}</p>",
+      controller: ["$scope", "benutzer", function ($scope, benutzer) {
+        $scope.benutzer = benutzer;
+      }],
+      resolve: {
+        benutzer: ["$q", "$timeout", function ($q, $timeout) {
+          var aufgabe = $q.defer();
+          $timeout(function () {
+            aufgabe.resolve({
+              vorname: "Gerd",
+              nachname: "Sittich",
+              alter: 35
+            });
+          }, 2000);
+          return aufgabe.promise;
+        }]
+      }
+    });
+}]);

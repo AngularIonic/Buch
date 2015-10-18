@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js">
+    </script>
+    <script type="text/javascript">
+      // Erzeugung des Moduls
+      var meineApp = angular.module(“meineErsteApp”, []);
+    </script>
+  </head>
+  <!-- Verknüpfung von body-Tag mit dem Modul -->
+  <body ng-app="meineErsteApp">
+  </body>
+</html>

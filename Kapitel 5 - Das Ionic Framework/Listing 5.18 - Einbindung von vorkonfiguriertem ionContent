@@ -1,0 +1,19 @@
+// Erzeugung des Moduls
+var meineApp = angular.module("meineErsteApp", ["ionic"]);
+meineApp.controller("hauptController", ["$scope", "$timeout", function ($scope,
+$timeout) {
+  $scope.scroll = 0;
+  $scope.scrollCount = function () {
+    $timeout(function () {
+      $scope.scroll = $scope.scroll + 1;
+    });
+  };
+}]);
+...
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp" ng-controller="hauptController">
+  <ion-content padding="true" delegate-handle="hauptScroller" has-bouncing="true" on-scroll-complete="scrollCount()">
+    Mein Seiteninhalt
+    Scroll: {{scroll}}
+  </ion-content>
+</body>

@@ -1,0 +1,26 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+  // Standardroute definieren
+  $urlRouterProvider.otherwise("/start");
+  // States definieren
+  $stateProvider
+    .state("start", {
+      url: "/start",
+      views: {
+        view1: {
+          template: "<p>Test</p>"
+        },
+        view2: {
+          template: "<p>123</p>"
+        }
+      }
+    });
+}]);
+...
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp">
+  <ui-view name="view1"></ui-view>
+  <ui-view name="view2"></ui-view>
+</body>

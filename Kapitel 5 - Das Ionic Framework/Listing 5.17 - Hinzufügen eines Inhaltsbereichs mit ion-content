@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meine erste App</title>
+    <!-- Einbinden von Ionic -->
+    <link href="http://code.ionicframework.com/1.0.1/css/ionic.min.css" rel="stylesheet">
+    <script src="http://code.ionicframework.com/1.0.1/js/ionic.bundle.min.js">
+    </script>
+    <script type="text/javascript">
+      // Erzeugung des Moduls
+      var meineApp = angular.module("meineErsteApp", ["ionic"]);
+    </script>
+  </head>
+  <!-- Verknüpfung von body-Tag mit dem Modul -->
+  <body ng-app="meineErsteApp">
+    <ion-content>
+      Mein Seiteninhalt
+    </ion-content>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+ 
+    // Standardroute definieren
+    $urlRouterProvider.otherwise("/start");
+
+    // States definieren
+    $stateProvider
+      .state("start", {
+        url: "/start",
+        controller: ["$scope", "$state", "$stateParams", function ($scope, $state, $stateParams) {
+          $scope.zustand = $state.current;
+          $scope.parameter = $stateParams;
+          $scope.geheZu = function () {
+            $state.go("zweiter", {
+              param1: 1
+            });
+          };
+      }],
+      template: "<p>Zustand: {{zustand}}<p> <p>Parameter: {{parameter}}</p><button ng-click='geheZu()'>Zu Zustand 2</button>",
+      data: {
+        "autorisierung": true
+      }
+    })
+    .state("zweiter", {
+      url: "/zweiter/:param1",
+      template: "<p>Zustand: {{zustand}}<p> <p>Parameter: {{parameter}}</p><button ng-click='geheZu()'>Zu Start</button>",
+      controller: ["$scope", "$state", "$stateParams", function ($scope, $state, $stateParams) {
+        $scope.zustand = $state.current;
+        $scope.parameter = $stateParams;
+        $scope.geheZu = function () {
+          $state.go("start");
+        };
+      }]
+    });
+}]);

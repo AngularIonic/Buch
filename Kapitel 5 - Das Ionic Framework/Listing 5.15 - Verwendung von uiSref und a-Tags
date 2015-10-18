@@ -1,0 +1,30 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+ 
+  // Standardroute definieren
+  $urlRouterProvider.otherwise("/start");
+
+  // States definieren
+  $stateProvider
+    .state("start", {
+      url: "/start",
+      controller: ["$scope", "$state", "$stateParams", function ($scope, $state, $stateParams) {
+        $scope.zustand = $state.current;
+        $scope.parameter = $stateParams;
+      }],
+      template: "<p>Zustand: {{zustand}}<p> <p>Parameter: {{parameter}}</p><a ui-sref='zweiter({ param1: 1 })'>Zu Zustand 2</a>",
+      data: {
+        "autorisierung": true
+      }
+    })
+    .state("zweiter", {
+      url: "/zweiter/:param1",
+      template: "<p>Zustand: {{zustand}}<p> <p>Parameter: {{parameter}}</p><a ui-sref='start'>Zu Start</a>",
+      controller: ["$scope", "$state", "$stateParams", function ($scope, $state, $stateParams) {
+        $scope.zustand = $state.current;
+        $scope.parameter = $stateParams;
+      }]
+    });
+}]);

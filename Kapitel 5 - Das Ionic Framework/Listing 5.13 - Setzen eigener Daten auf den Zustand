@@ -1,0 +1,9 @@
+$stateProvider
+  .state("start", {
+    url: "/start",
+    template: "<p>Test</p>",
+    data: {
+      "autorisierung": true // wird an mögliche Kinder vererbt
+    },
+    autorisierung: true
+  });

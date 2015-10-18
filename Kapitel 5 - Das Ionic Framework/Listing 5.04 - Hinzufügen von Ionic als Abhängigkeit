@@ -1,0 +1,4 @@
+<script type="text/javascript">
+  // Erzeugung des Moduls
+  var meineApp = angular.module("meineErsteApp", ["ionic"]);
+</script>

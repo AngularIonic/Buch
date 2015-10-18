@@ -1,0 +1,4 @@
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp">
+  <ui-view></ui-view>
+</body>

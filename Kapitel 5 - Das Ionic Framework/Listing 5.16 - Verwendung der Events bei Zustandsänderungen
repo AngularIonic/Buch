@@ -1,0 +1,45 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+ 
+    // Standardroute definieren
+    $urlRouterProvider.otherwise("/start");
+
+    // States definieren
+    $stateProvider
+      .state("start", {
+        url: "/start",
+        controller: ["$scope", "$state", "$stateParams", function ($scope, $state, $stateParams) {
+          $scope.zustand = $state.current;
+          $scope.parameter = $stateParams;
+          $scope.$on("$stateChangeStart", function (event, zielZustand, zielParameter, startZustand, startParameter) {
+            // Zustandsänderung beginnt
+            alert("gehe zu:" + zielZustand.name);
+          });
+          $scope.$on("$stateChangeSuccess", function (event, zielZustand, zielParameter, startZustand, startParameter) {
+            // Zustandsänderung beginnt
+            alert("komme von:" + startZustand.name);
+          });
+        }],
+        template: "<p>Zustand: {{zustand}}<p> <p>Parameter: {{parameter}}</p><a ui-sref='zweiter({ param1: 1 })'>Zu Zustand 2</a>",
+        data: {
+          "autorisierung": true
+        }
+      })
+      .state("zweiter", {
+        url: "/zweiter/:param1",
+        template: "<p>Zustand: {{zustand}}<p> <p>Parameter: {{parameter}}</p><a ui-sref='start'>Zu Start</a>",
+        controller: ["$scope", "$state", "$stateParams", function ($scope, $state, $stateParams) {
+          $scope.zustand = $state.current;
+          $scope.parameter = $stateParams;
+          $scope.$on("$stateChangeStart", function (event, zielZustand, zielParameter, startZustand, startParameter) {
+            // Zustandsänderung beginnt
+            alert("gehe zu:" + zielZustand.name);
+          });
+          $scope.$on("$stateChangeSuccess", function (event, zielZustand, zielParameter, startZustand, startParameter) {
+            alert("komme von: " + startZustand.name);
+          });
+        }]
+      });
+}]);
