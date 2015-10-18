@@ -1,0 +1,6 @@
+function promiseFunktion() {
+  // Deferred-Objekt erstellt
+  var task = $q.defer();
+   
+  return task.promise;
+}

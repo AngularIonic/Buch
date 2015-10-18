@@ -1,0 +1,26 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    $scope.meinWert = true;
+    $scope.watcherNummer = 0;
+    // Setze Watcher
+    var watcherEntfernen = $scope.$watchGroup(["meinWert", "meinZweiterWert"], function (neueWerte, alteWerte, scope) {
+      // Erhöhe watcherNummer
+      $scope.watcherNummer = $scope.watcherNummer + 1;
+    });
+    // Setze Wert um
+    $scope.setzeWert = function () {
+      $scope.meinWert = !$scope.meinWert;
+    };
+    $scope.watcher = function () {
+      watcherEntfernen();
+    };
+  }
+]);
+...
+<div ng-controller="meinController">
+  {{meinWert}}<br />
+  Watcher-Aufrufe: {{watcherNummer}}
+  <button ng-click="setzeWert()">Ändere Wert</button>
+  <button ng-click="watcher()">Lösche Watcher</button>
+</div>

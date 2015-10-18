@@ -1,0 +1,4 @@
+$http({
+  url: "http://meine-schnittstelle.de",
+  method: "GET"
+});

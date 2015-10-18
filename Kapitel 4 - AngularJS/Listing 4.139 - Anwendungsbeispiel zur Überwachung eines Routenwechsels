@@ -1,0 +1,67 @@
+// Erzeugung des Moduls
+var meineApp = angular.module("meineErsteApp", ["ngRoute"]);
+meineApp.controller("meinBasisController", [
+  "$scope",
+  function ($scope) {
+    // Hören auf die ngRoute Events
+    $scope.$on("$routeChangeStart", function (event, aktuelleRoute, folgendeRoute) {
+      $scope.aktuelleRouteStart = aktuelleRoute;
+      $scope.folgendeRoute = folgendeRoute;
+    });
+    $scope.$on("$routeChangeSuccess", function (event, aktuelleRoute, vorherigeRoute) {
+      $scope.aktuelleRouteEnde = aktuelleRoute;
+      $scope.vorherigeRoute = vorherigeRoute;
+    });
+  }
+]);
+meineApp.controller("meinController", [
+  "$scope",
+  "$location",
+  function ($scope, $location) {
+    // Befüllen des $scope, wenn DOM geladen wurde
+    $scope.$on("$viewContentLoaded", function (event) {
+      $scope.meinWert = "Hallo, das ist der Anfang :)";
+    });
+  }
+]);
+meineApp.controller("meinWeitererController", [
+  "$scope",
+  "$location",
+  function ($scope, $location) {
+    $scope.meinWert = "Das Ende :(";
+  }
+]);
+meineApp.config(["$routeProvider", function ($routeProvider) {
+  // Definition von Routen
+  $routeProvider
+    .when("/start", {
+      controller: "meinController",
+      templateUrl: "templates/meinTemplate.html" // Pfad zum Template
+    })
+    .when("/ende", {
+      controller: "meinWeitererController",
+      templateUrl: "templates/meinWeiteresTemplate.html" // Pfad zum Template
+    })
+    .otherwise("/start");
+}]);
+...
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp" ng-controller="meinBasisController">
+  <ng-view></ng-view>
+  <script type="text/ng-template" id="templates/meinTemplate.html">
+    <p>{{meinWert}}</p>
+    <a ng-href="#ende">zur anderen Seite (Ende)</a>
+    <p>aktuelleRouteStart: {{aktuelleRouteStart}}</p><br />
+    <p>aktuelleRouteEnde: {{aktuelleRouteEnde}}</p><br />
+    <p>vorherigeRoute: {{vorherigeRoute}}</p><br />
+    <p>folgendeRoute: {{folgendeRoute}}</p>
+  </script>
+  <script type="text/ng-template" id="templates/meinWeiteresTemplate.html">
+    <i>{{meinWert}}</i><br />
+    <a ng-href="#start">zur anderen Seite (Start)</a>
+    <p>aktuelleRouteStart: {{aktuelleRouteStart}}</p><br />
+    <p>aktuelleRouteEnde: {{aktuelleRouteEnde}}</p><br />
+    <p>vorherigeRoute: {{vorherigeRoute}}</p><br />
+    <p>folgendeRoute: {{folgendeRoute}}</p>
+  </script>
+</body>

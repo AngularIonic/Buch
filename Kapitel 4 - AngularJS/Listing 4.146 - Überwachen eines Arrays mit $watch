@@ -1,0 +1,27 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    $scope.meinWert = [1, 0];
+    $scope.watcherNummer = 0;
+    // Setze Watcher
+    $scope.$watch("meinWert", function (neuerWert, alterWert) {
+      // Erhöhe watcherNummer
+      $scope.watcherNummer = $scope.watcherNummer + 1;
+    });
+    // Setze Wert um
+    $scope.setzeWert = function () {
+      $scope.meinWert.push(1);
+    };
+    // Ersetze Liste
+    $scope.ersetzeListe = function () {
+      $scope.meinWert = [1, 0];
+    };
+  }
+]);
+...
+<div ng-controller="meinController">
+  {{meinWert}}<br />
+  Watcher-Aufrufe: {{watcherNummer}}
+  <button ng-click="setzeWert()">Ändere Wert</button>
+  <button ng-click="ersetzeListe()">Ersetze Liste (Referenz)</button>
+</div>

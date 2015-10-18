@@ -1,0 +1,4 @@
+var meineVariable = 0;
+setInterval(function () {
+  meineVariable = meineVariable + 1;
+}, 500);

@@ -1,0 +1,10 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$q",
+  function ($scope, $q) {
+    function promiseFunktion() {
+      // Deferred-Objekt erstellt
+      var task = $q.defer();
+    }
+  }
+]);

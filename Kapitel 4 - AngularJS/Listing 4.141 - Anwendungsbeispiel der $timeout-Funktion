@@ -1,0 +1,14 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$timeout",
+  function ($scope, $timeout) {
+    // Setze Wert nach 2000ms
+    $timeout(function () {
+      $scope.meinWert = "Hallo!";
+    }, 2000);
+  }
+]);
+...
+<div ng-controller="meinController">
+  {{meinWert}}
+</div>

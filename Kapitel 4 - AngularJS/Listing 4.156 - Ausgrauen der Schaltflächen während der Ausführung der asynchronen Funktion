@@ -1,0 +1,32 @@
+$scope.meinPromise = function (ablehnen) {
+  $scope.unterwegs = true;
+  promiseFunktion(ablehnen).then(
+    // Erfolgsfunktion
+    function (erfolgsDaten) {
+      $scope.ergebnis = erfolgsDaten;
+      $scope.erfolg = true;
+    },
+    // Fehlerfunktion
+    function (fehlerDaten) {
+      $scope.ergebnis = fehlerDaten;
+      $scope.erfolg = false;
+    }
+  ).finally(
+    function () {
+      $scope.unterwegs = false;
+    }
+  );
+};
+...
+<div ng-controller="meinController">
+  <div ng-if="!unterwegs">
+    <p ng-if="erfolg">Juhu, alles hat geklappt :)</p>
+    <p ng-if="erfolg === false">Schade, da ist wohl etwas schiefgegangen :(</p>
+    <p>{{ergebnis}}</p>
+  </div>
+  <div ng-if="unterwegs">
+    Anfrage wird bearbeitet ...
+  </div>
+  <button ng-click="meinPromise(true)" ng-disabled="unterwegs">Reject</button>
+  <button ng-click="meinPromise()" ng-disabled="unterwegs">Resolve</button>
+</div>

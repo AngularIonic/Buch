@@ -1,0 +1,49 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$q",
+  "$timeout",
+  function ($scope, $q, $timeout) {
+    function promiseFunktion(ablehnen) {
+      // Deferred-Objekt erstellt
+      var task = $q.defer();
+      // Verzögere Ausführung
+      $timeout(function () {
+        if (ablehnen) {
+          // Promise ablehnen
+          task.reject({
+            ergebnis: false
+          });
+        } else {
+          // Promise erfolgreich
+          task.resolve({
+            ergebnis: true
+          });
+        }
+      }, 1000);
+      // Gibt Promise-Objekt zurück
+      return task.promise;
+    }
+    $scope.meinPromise = function (ablehnen) {
+      promiseFunktion(ablehnen).then(
+        // Erfolgsfunktion
+        function (erfolgsDaten) {
+          $scope.ergebnis = erfolgsDaten;
+          $scope.erfolg = true;
+        },
+        // Fehlerfunktion
+        function (fehlerDaten) {
+          $scope.ergebnis = fehlerDaten;
+          $scope.erfolg = false;
+        }
+      );
+    };
+  }
+]);
+...
+<div ng-controller="meinController">
+  <p ng-if="erfolg">Juhu, alles hat geklappt :)</p>
+  <p ng-if="erfolg === false">Schade, da ist wohl etwas schiefgegangen :(</p>
+  <p>{{ergebnis}}</p>
+  <button ng-click="meinPromise(true)">Reject</button>
+  <button ng-click="meinPromise()">Resolve</button>
+</div>

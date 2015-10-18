@@ -1,0 +1,9 @@
+meineApp.controller("meinElternController", [
+  "$scope",
+  function ($scope) {
+    var entferneListener = $scope.$on("meinControllerDaten", function (event, daten) {
+      $scope.elternDaten = daten;
+      entferneListener();
+    });
+  }
+]);

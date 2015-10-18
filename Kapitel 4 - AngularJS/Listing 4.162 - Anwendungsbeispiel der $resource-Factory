@@ -1,0 +1,30 @@
+// Erstellt Benutzer-Resource-Klasse
+var Benutzer = $resource("/user/:benutzerID", {
+  benutzerID: "@id"
+}, {
+  "update": {
+    "method": "PUT"
+  }
+});
+// Erzeugt neue Nutzer-Instanz
+var neuerNutzer = new Benutzer({
+  "name": "Hermann Schultz"
+});
+// Setzt weitere Werte
+neuerNutzer.alter = 63;
+// Speichert neuen Nutzer: POST /user
+neuerNutzer.$save();
+// Holt alle Nutzer: GET /user
+var users = Benutzer.query(function () {
+  // Mit Nutzern arbeiten
+});
+// Holt einen Nutzer: GET /user/123
+var user = Benutzer.get({
+  "benutzerID": 123
+});
+// Aktualisiert Nutzer: PUT /user/123
+Benutzer.update({
+  "benutzerID": user.id
+}, user);
+// Löscht Nutzer: DELETE /user/123
+user.$remove();

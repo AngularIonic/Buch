@@ -1,0 +1,51 @@
+<script type="text/javascript">
+  // Erzeugung des Moduls
+  var meineApp = angular.module("meineErsteApp", ["ngRoute"]);
+  meineApp.controller("meinController", [
+    "$scope",
+    "openStreetMapService",
+    function ($scope, openStreetMapService) {
+      $scope.sendFormular = function () {
+        // Indikator, dass Anfrage gestartet wird
+        $scope.unterwegs = true;
+        // Sendet Suchanfrage an eingegebenen Ort
+        openStreetMapService.sucheOrt($scope.ort)
+          .then(function (antwort) {
+            // Schreibe Ergebnis auf $scope
+            $scope.adressen = antwort.data;
+          }, function (antwort) {
+            // Möglicher Fehlerfall
+          })
+          .finally(function () {
+            // Anfrage ist nicht mehr unterwegs
+            $scope.unterwegs = false;
+          });
+      };
+    }
+  ]);
+  meineApp.service("openStreetMapService", [
+    "$http",
+    function ($http) {
+      // Service-Funktion zur Adresssuche
+      this.sucheOrt = function (ort) {
+        // Sende Anfrage an openstreetmap
+        return $http.get("http://nominatim.openstreetmap.org/search/de/?format=json&q=" + encodeURIComponent(ort));
+      };
+    }
+  ]);
+</script>
+...
+<div ng-controller="meinController">
+  <!-- Suchformular -->
+  <form name="formular" ng-submit="formular.$valid && sendFormular()">
+    <input type="text" ng-model="ort" required>
+    <button ng-disabled="formular.$invalid || unterwegs">Suche Ort</button>
+  </form>
+  <!-- Ausgabe der Suchergebnisse -->
+  <div ng-repeat="adresse in adressen" ng-if="!unterwegs">
+    <p>{{adresse.display_name}}</p>
+  </div>
+  <div ng-if="unterwegs">
+    Bitte warten...
+  </div>
+</body>

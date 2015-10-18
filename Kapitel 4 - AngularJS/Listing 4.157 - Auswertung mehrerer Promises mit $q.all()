@@ -1,0 +1,25 @@
+$scope.meinPromise = function (ablehnen) {
+  $scope.unterwegs = true;
+  // Liste von asynchronen Aufgaben
+  var aufgaben = [];
+  // Befüllen der Liste
+  aufgaben.push(promiseFunktion(ablehnen));
+  aufgaben.push(promiseFunktion());
+  // Auswertung der Aufgaben
+  $q.all(aufgaben).then(
+    // Erfolgsfunktion
+    function (erfolgsDaten) {
+      $scope.ergebnis = erfolgsDaten;
+      $scope.erfolg = true;
+    },
+    // Fehlerfunktion
+    function (fehlerDaten) {
+      $scope.ergebnis = fehlerDaten;
+      $scope.erfolg = false;
+    }
+  ).finally(
+    function () {
+      $scope.unterwegs = false;
+    }
+  );
+};

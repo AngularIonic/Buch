@@ -1,0 +1,15 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$interval",
+  function ($scope, $interval) {
+    $scope.meinWert = 0;
+    // Setze Wert nach 500ms
+    $interval(function () {
+      $scope.meinWert = $scope.meinWert + 1;
+    }, 500);
+  }
+]);
+...
+<div ng-controller="meinController">
+  {{meinWert}}
+</div>

@@ -1,0 +1,8 @@
+$http({
+  url: "http://meine-schnittstelle.de",
+  method: "GET"
+}).then(function (ergebnis) {
+  // Erfolgsfall
+}, function (ergebnis) {
+  // Fehlerfall
+});

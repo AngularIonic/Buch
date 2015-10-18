@@ -1,0 +1,4 @@
+var meineVariable;
+setTimeout(function () {
+  meineVariable = "Hallo!";
+}, 500);

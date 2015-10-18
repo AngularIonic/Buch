@@ -1,0 +1,6 @@
+$scope.$watch(function () {
+  return $scope.meinWert;
+}, function (neuerWert, alterWert) {
+  // Erhöhe watcherNummer
+  $scope.watcherNummer = $scope.watcherNummer + 1;
+});

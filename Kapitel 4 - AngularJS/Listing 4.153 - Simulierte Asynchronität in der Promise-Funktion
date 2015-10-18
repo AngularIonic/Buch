@@ -1,0 +1,27 @@
+meineApp.controller("meinController", [
+  "$scope",
+  "$q",
+  "$timeout",
+  function ($scope, $q, $timeout) {
+    function promiseFunktion(ablehnen) {
+      // Deferred-Objekt erstellt
+      var task = $q.defer();
+      // Verzögere Ausführung
+      $timeout(function () {
+        if (ablehnen) {
+          // Promise ablehnen
+          task.reject({
+            ergebnis: false
+          });
+        } else {
+          // Promise erfolgreich
+          task.resolve({
+            ergebnis: true
+          });
+        }
+      }, 1000);
+      // Gibt Promise-Objekt zurück
+      return task.promise;
+    }
+  }
+]);
