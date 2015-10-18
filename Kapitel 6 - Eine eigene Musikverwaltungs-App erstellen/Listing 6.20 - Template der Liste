@@ -1,0 +1,20 @@
+<ion-view>
+  <ion-nav-title>{{genre.label}}</ion-nav-title>
+  <ion-content class="padding">
+    <ion-refresher on-refresh="refresh()">
+    </ion-refresher>
+    <div class="text-center">
+      <ion-spinner ng-show="listLoading">
+      </ion-spinner>
+      <p ng-show="!listLoading && !music.length">Keine Einträge vorhanden :(</p>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="entry in music" class="item-avatar" ui-sref="app.detail({'id': entry.id})">
+        <img ng-src="{{entry.cover}}">
+        <h2><i class="icon ion-heart" ng-class="{'assertive': entry.favorite}"></i> {{entry.title}}</h2>
+        <p><i class="icon ion-headphone" ng-if="entry.listened"></i> {{entry.artist}}</p>
+        <ion-option-button class="button-assertive ion-minus-circled" ng-click="remove(entry.id)"></ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

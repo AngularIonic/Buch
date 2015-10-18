@@ -1,0 +1,42 @@
+angular.module('musikMax.services')
+.service('pageService', [
+  '$q',
+  '$timeout',
+  'dataService',
+  function ($q, $timeout, dataService) {
+    // Hole alle Inhaltsseiten
+    this.get = function () {
+      var deferred = $q.defer();
+      $timeout(function () {
+        deferred.resolve(dataService.pages);
+      }, 200);
+      return deferred.promise;
+    }
+
+    // Frage spezielle Seite an
+    this.getOne = function (alias) {
+      var deferred = $q.defer(),
+          page,
+          i = 0;
+
+      // Suche Seite
+      for (i; i < dataService.pages.length; i = i + 1) {
+        // Falls gefunden - breche Schleife ab
+        if (dataService.pages[i].alias === alias) {
+          page = dataService.pages[i];
+          break;
+        }
+      };
+
+      // Falls Seite nicht gefunden, gibt Fehlercode 404 zurück
+      $timeout(function () {
+        if (page) {
+          deferred.resolve(page);
+        } else {
+          deferred.reject(404);
+        }
+      }, 200);
+      return deferred.promise;
+    };
+  }
+]);

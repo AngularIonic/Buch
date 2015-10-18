@@ -1,0 +1,26 @@
+// Lade ein Genre
+this.getOneGenre = function (alias) {
+  var deferred = $q.defer(),
+      genre,
+      i = 0;
+
+  // Suche Genre
+  for (i; i < dataService.genres.length; i = i + 1) {
+    // Falls gefunden - breche Schleife ab
+    if (dataService.genres[i].alias === alias) {
+      genre = dataService.genres[i];
+      break;
+    }
+  }
+
+  // Falls Genre nicht gefunden, gibt Fehlercode 404 zurück
+  $timeout(function () {
+    if (genre) {
+      deferred.resolve(angular.copy(genre));
+    } else {
+      deferred.reject(404);
+    }
+  }, 200);
+
+  return deferred.promise;
+};

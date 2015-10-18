@@ -1,0 +1,75 @@
+// Erzeuge Erstell-Modal
+$ionicModal.fromTemplateUrl('templates/create.html', {
+  scope: $scope
+}).then(function (modal) {
+  $scope.modal = modal;
+});
+
+// Setze Standardwerte
+$scope.newEntry = {
+  genre: '',
+  rating: 0,
+  favorite: false,
+  listened: false,
+  year: '',
+  comment: '',
+  media: {
+    lp: false,
+    mp3: false,
+    cd: false
+  }
+};
+
+// Modal öffnen
+$scope.openModal = function () {
+  $scope.modal.show().then(function () {
+    // Vorherige Scroll-Position zurücksetzen
+    $ionicScrollDelegate.$getByHandle('createModal').resize();
+    $ionicScrollDelegate.$getByHandle('createModal').scrollTop();
+  });
+};
+
+// Modal schließen
+$scope.closeModal = function () {
+  $scope.modal.hide();
+};
+
+// Neuen Eintrag erzeugen
+$scope.create = function () {
+  $ionicLoading.show({
+    template: 'Bitte warten ...'
+  });
+
+  musicService.create($scope.newEntry).then(function () {
+    $ionicLoading.hide();
+    $scope.newEntry = {
+      genre: '',
+      rating: 0,
+      favorite: false,
+      listened: false,
+      year: '',
+      comment: '',
+      media: {
+        lp: false,
+        mp3: false,
+        cd: false
+      }
+    };
+
+    // Schließe Modal
+    $scope.modal.hide().then(function() {
+      $ionicHistory.nextViewOptions({
+        animation: false,
+        historyRoot: true
+      });
+
+      // Gehe aufs Dashboard
+      $state.go('app.dashboard').then(function () {
+        // Informiere alle Controller darüber
+        $rootScope.$broadcast('reloadMusic');
+      });
+    });
+  }, function () {
+    $ionicLoading.hide();
+  });
+};

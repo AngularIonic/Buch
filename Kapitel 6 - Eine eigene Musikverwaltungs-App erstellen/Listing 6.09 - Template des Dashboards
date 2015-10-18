@@ -1,0 +1,47 @@
+<ion-view view-title="MusikMax">
+  <ion-content padding="true">
+    <ion-refresher on-refresh="refresh()">
+    </ion-refresher>
+    <div class="text-center">
+      <ion-spinner ng-show="dashboardLoading"></ion-spinner>
+      <div class="row" ng-show="!dashboardLoading">
+        <div class="col col-33" style="font-size: 18px;">{{stats.favorites}}<br/><i class="icon ion-heart" style="font-size: 32px;"></i></div>
+        <div class="col col-33" style="font-size: 18px;">{{stats.all}}<br/><i class="icon ion-disc" style="font-size: 32px;"></i></div>
+        <div class="col col-33" style="font-size: 18px;">{{stats.listened}}<br/><i class="icon ion-headphone" style="font-size: 32px;"></i></div>
+      </div>
+    </div>
+    <ion-slide-box ng-if="last" show-pager="false">
+      <ion-slide ng-repeat="entry in last" ui-sref="app.detail({id: entry.id})">
+        <div class="card">
+          <div class="item item-divider">
+            <div class="row">
+              <div class="col col-50">
+                <h2>{{entry.title}}</h2>
+                <p>{{entry.artist}}</p>
+              </div>
+              <div class="col col-50 text-right">
+                <i class="icon ion-heart" ng-class="{'assertive': entry.favorite}"></i>
+              </div>
+            </div>
+          </div>
+          <div class="item" style="text-align: center;">
+            <img ng-src="{{entry.cover}}" ng-if="entry.cover" height="275" width="275" style="margin: 0 auto;">
+            <img ng-if="!entry.cover" height="275" width="275" style="margin: 0 auto;">
+          </div>
+          <div class="item item-divider">
+            <div class="row">
+              <div class="col col-50">
+                <i class="icon" ng-repeat="number in [1, 2, 3, 4, 5]"
+                  ng-class="{'ion-android-star': entry.rating >= number, 'ion-android-star-outline': entry.rating < number}">
+                </i>
+              </div>
+              <div class="col col-50 text-right">
+                <i class="icon ion-headphone" ng-if="entry.listened"></i>
+              </div>
+            </div>
+          </div>
+        </div
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

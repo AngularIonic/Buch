@@ -1,0 +1,9 @@
+<ion-view view-title="{{title}}">
+  <ion-content padding="true">
+    <div class="text-center">
+      <ion-spinner ng-show="pageLoading">
+      </ion-spinner>
+    </div>
+    <p ng-bind-html="text" ng-show="!pageLoading">
+  </ion-content>
+</ion-view>

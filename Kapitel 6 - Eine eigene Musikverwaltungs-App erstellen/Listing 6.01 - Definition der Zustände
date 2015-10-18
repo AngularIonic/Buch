@@ -1,0 +1,47 @@
+app.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
+    controller: 'AppCtrl'
+  })
+  .state('app.dashboard', {
+    url: '/dashboard',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/dashboard.html',
+        controller: 'DashboardCtrl'
+      }
+    }
+  })
+  .state('app.list', {
+    url: '/list/:genre',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/list.html',
+        controller: 'ListCtrl'
+      }
+    }
+  })
+  .state('app.detail', {
+    url: '/detail/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/detail.html',
+        controller: 'DetailCtrl'
+      }
+    }
+  })
+  .state('app.page', {
+    url: '/page/:alias',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/page.html',
+        controller: 'PageCtrl'
+      }
+    }
+  });
+  // Standard-/ Fallback-URL
+  $urlRouterProvider.otherwise('/app/dashboard');
+});

@@ -1,0 +1,17 @@
+angular.module('musikMax.controllers')
+.controller('PageCtrl', [
+  '$scope',
+  '$stateParams',
+  '$sce',
+  'pageService',
+  function($scope, $stateParams, $sce, pageService) {
+    // Initiales Laden der Daten
+    $scope.pageLoading = true;
+    pageService.getOne($stateParams.alias).then(function (page) {
+      $scope.title = page.title;
+      $scope.text = $sce.trustAsHtml(page.text);
+    }).finally(function () {
+      $scope.pageLoading = false;
+    });
+  }
+]);

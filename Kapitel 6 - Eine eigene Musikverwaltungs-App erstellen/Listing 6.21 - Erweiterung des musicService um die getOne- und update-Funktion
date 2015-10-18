@@ -1,0 +1,55 @@
+// Hole einen Musikeintrag
+this.getOne = function (id) {
+  var deferred = $q.defer(),
+      entry,
+      i = 0;
+
+  // Suche Eintrag
+  for (i; i < dataService.music.length; i = i + 1) {
+    // Falls gefunden - breche Schleife ab
+    if (dataService.music[i].id.toString() === id) {
+      entry = dataService.music[i];
+      break;
+    }
+  }
+
+  // Falls Eintrag nicht gefunden, gibt Fehlercode 404 zurück
+  $timeout(function () {
+    if (entry) {
+      // Erstelle Kopie, um Referenz aufzulösen
+      deferred.resolve(angular.copy(entry));
+    } else {
+      deferred.reject(404);
+    }
+  }, 200);
+
+  return deferred.promise;
+};
+
+// Ändern eines Eintrags
+this.update = function (id, data) {
+  var deferred = $q.defer(),
+      entry,
+      i = 0;
+
+  // Suche Eintrag
+  for (i; i < dataService.music.length; i = i + 1) {
+    // Falls gefunden - breche Schleife ab
+    if (dataService.music[i].id === id) {
+      entry = angular.merge(dataService.music[i], data);
+      break;
+    }
+  }
+
+  // Falls Eintrag nicht gefunden, gibt Fehlercode 404 zurück
+  $timeout(function () {
+    if (entry) {
+      // Erstelle Kopie, um Referenz aufzulösen
+      deferred.resolve(angular.copy(entry));
+    } else {
+      deferred.reject(404);
+    }
+  }, 200);
+
+  return deferred.promise;
+};

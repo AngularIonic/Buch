@@ -1,0 +1,55 @@
+<ion-modal-view view-title="Playlist">
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear button-dark icon ion-close-circled" ng-click="closeModal()"></button>
+    </div>
+    <h1 class="title">Eintrag erstellen</h1>
+  </ion-header-bar>
+  <ion-content delegate-handle="createModal">
+    <form name="form.newEntry" ng-submit="form.newEntry.$valid && create()">
+      <div class="list card">
+        <div class="item item-divider">Allgemein</div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Titel*</span>
+          <input type="text" ng-model="newEntry.title" required="required" placeholder="Titel*">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Interpret*</span>
+          <input type="text" ng-model="newEntry.artist" required="required" placeholder="Interpret*">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Jahr</span>
+          <input type="text" ng-model="newEntry.year" placeholder="Jahr">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Kommentar</span>
+          <input type="text" ng-model="newEntry.comment" placeholder="Kommentar">
+        </label>
+      </div>
+      <div class="list card">
+        <div class="item item-divider">Medium</div>
+          <ion-checkbox ng-checked="newEntry.media.lp" ng-click="newEntry.media.lp = !newEntry.media.lp">Vinyl</ion-checkbox>
+          <ion-checkbox ng-checked="newEntry.media.cd" ng-click="newEntry.media.cd = !newEntry.media.cd">CD</ion-checkbox>
+          <ion-checkbox ng-checked="newEntry.media.mp3" ng-click="newEntry.media.mp3 = !newEntry.media.mp3">Mp3</ion-checkbox>
+      </div>
+      <div class="list card">
+        <label class="item item-select">
+          <span class="input-label">Genre*</span>
+          <select ng-model="newEntry.genre" ng-options="genre.alias as genre.label for genre in genres" required="required">
+            <option value="">bitte wählen</option>
+          </select>
+        </label>
+      </div>
+      <div class="padding">* Pflichfeld</div>
+      <div class="text-center">
+        <button type="button" class="button button-clear icon" ng-click="newEntry.rating = newEntry.rating === number ? 0 : number" ng-repeat="number in [1, 2, 3, 4, 5]" ng-class="{'ion-android-star button-dark': newEntry.rating >= number, 'ion-android-star-outline': newEntry.rating < number}">
+        </button>
+      </div>
+      <div class="text-right">
+        <button type="button" class="button button-clear icon ion-headphone" ng-click="newEntry.listened = !newEntry.listened" ng-class="{'button-dark': newEntry.listened}"></button>
+        <button type="button" class="button button-clear icon ion-heart" ng-click="newEntry.favorite = !newEntry.favorite" ng-class="{'button-assertive': newEntry.favorite}"></button>
+      </div>
+      <button class="button button-block" ng-disabled="!form.newEntry.$valid">Speichern</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

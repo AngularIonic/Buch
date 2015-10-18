@@ -1,0 +1,6 @@
+angular.module('musikMax.services', [])
+.service('dataService', [
+  function () {
+    this.music = [] // Die Liste mit Musikobjekten
+  }
+]);

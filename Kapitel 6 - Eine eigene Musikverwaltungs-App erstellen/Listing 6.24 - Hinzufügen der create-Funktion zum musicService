@@ -1,0 +1,16 @@
+// Erstellen eines Eintrags
+this.create = function (data) {
+  var deferred = $q.defer();
+  // Setzen der ID
+  data.id = dataService.music.length;
+  // Setze Erstelldatum
+  data.creationDate = new Date().getTime();
+  // Eintrag hinzufügen
+  dataService.music.push(data);
+ 
+  $timeout(function () {
+    deferred.resolve();
+  }, 200);
+
+  return deferred.promise;
+};

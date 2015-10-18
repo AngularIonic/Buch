@@ -1,0 +1,46 @@
+// Hole Musikeinträge
+this.get = function (limit, orderDesc, genre) {
+  // Standardsortierung
+  orderDesc = orderDesc || true;
+  // Sortierfunktion setzen
+  var sortFunc = orderDesc ? sortDesc : sortAsc,
+      deferred = $q.defer(),
+
+      sortMusic = [],
+      filterMusic = [],
+      i = 0,
+      limitMusic = [];
+
+  // Liste sortieren
+  sortMusic = dataService.music.sort(sortFunc);
+
+  // Nach Genre filtern
+  if (genre) {
+    for (i; i < sortMusic.length; i = i + 1) {
+      if (sortMusic[i].genre === genre) {
+        filterMusic.push(sortMusic[i]);
+      }
+    }
+  } else {
+    filterMusic = sortMusic;
+  }
+
+  // Hole Anzahl an Einträgen
+  if (limit) {
+    for (i; i < filterMusic.length; i = i + 1) {
+      if (i >= limit) {
+        break;
+      }
+      limitMusic.push(filterMusic[i]);
+    }
+  } else {
+    // Alle Einträge
+    limitMusic = filterMusic;
+  }
+
+  $timeout(function () {
+    deferred.resolve(angular.copy(limitMusic));
+  }, 500);
+
+  return deferred.promise;
+};

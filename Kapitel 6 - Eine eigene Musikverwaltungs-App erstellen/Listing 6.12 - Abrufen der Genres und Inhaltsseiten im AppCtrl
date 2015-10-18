@@ -1,0 +1,23 @@
+angular.module('musikMax.controllers')
+.controller('AppCtrl', [
+  '$q',
+  '$scope',
+  'musicService',
+  'pageService',
+  function($q, $scope, musicService, pageService) {
+    // Funktion für Pull-To-Refresh
+    $scope.refresh = function () {
+      musicService.getGenres().then(function (genres) {
+        $scope.genres = genres;
+      }).finally(function () {
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    };
+
+    // Initiales Laden der Daten
+    $q.all([musicService.getGenres(), pageService.get()]).then(function (results) {
+      $scope.genres = results[0];
+      $scope.pages = results[1];
+    });
+  }
+]);

@@ -1,0 +1,18 @@
+{
+  'cover': 'img/music/kiss_of_death.jpg',
+  'creationDate': new Date().getTime() - 10000,
+  'title': 'Kiss of Death',
+  'artist': 'Motörhead',
+  'year': 2006,
+  'favorite': true,
+  'rating': 5,
+  'listened': true,
+  'genre': 'metal',
+  'comment': 'Lemmy Kilmister!',
+  'media': {
+    'mp3': true,
+    'lp': true,
+    'cd': false
+  },
+  'id': 17
+}

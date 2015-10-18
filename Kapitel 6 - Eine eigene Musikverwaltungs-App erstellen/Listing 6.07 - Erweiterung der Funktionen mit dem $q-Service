@@ -1,0 +1,29 @@
+this.stats = function () {
+  var result = {},
+      // Erstelle deferred
+      deferred = $q.defer();
+
+  // Komplette Länge
+  result.all = dataService.music.length;
+  result.listened = 0;
+  result.favorites = 0;
+
+  angular.forEach(dataService.music, function (entry) {
+    // Zähle gehörte Einträge
+    if (entry.listened) {
+      result.listened = result.listened + 1;
+    }
+    // Zähle Favoriten
+    if (entry.favorite) {
+      result.favorites = result.favorites + 1;
+    }
+  });
+
+  // Löse Promise erfolgreich nach 0,5 s auf
+  $timeout(function () {
+    deferred.resolve(result);
+  }, 500);
+
+  // Gibt Promise zurück
+  return deferred.promise;
+};

@@ -1,0 +1,18 @@
+this.stats = function () {
+  var result = {};
+  // Komplette Länge
+  result.all = dataService.music.length;
+  result.listened = 0;
+  result.favorites = 0;
+  angular.forEach(dataService.music, function (entry) {
+    // Zähle gehörte Einträge
+    if (entry.listened) {
+      result.listened = result.listened + 1;
+    }
+    // Zähle Favoriten
+    if (entry.favorite) {
+      result.favorites = result.favorites + 1;
+    }
+  });
+  return result;
+};

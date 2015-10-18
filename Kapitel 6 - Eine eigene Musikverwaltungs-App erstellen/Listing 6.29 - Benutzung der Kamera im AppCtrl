@@ -1,0 +1,21 @@
+$scope.getPicture = function () {
+  // Setze Kamera-Optionen
+  var options = {
+    quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,
+    allowEdit: true,
+    encodingType: Camera.EncodingType.JPEG,
+    targetWidth: 1000,
+    targetHeight: 1000,
+    saveToPhotoAlbum: true
+  };
+  // Wenn Ionic und das Gerät mit Plugins bereit sind
+  $ionicPlatform.ready(function() {
+    // Starte Kamera
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      // Setze Cover
+      $scope.newEntry.cover = 'data:image/jpeg;base64,' + imageData;
+    });
+  });
+};

@@ -1,0 +1,27 @@
+// Lösche Eintrag
+this.delete = function (id) {
+  var deferred = $q.defer(),
+      index,
+      i = 0;
+
+  // Suche Eintrag
+  for (i; i < dataService.music.length; i = i + 1) {
+    // Falls gefunden - lösche und breche Schleife ab
+    if (dataService.music[i].id === id) {
+      index = i;
+      dataService.music.splice(i, 1);
+      break;
+    }
+  }
+
+  // Falls Eintrag nicht gefunden, gibt Fehlercode 404 zurück
+  $timeout(function () {
+    if (index !== undefined) {
+      deferred.resolve();
+    } else {
+      deferred.reject(404);
+    }
+  }, 200);
+
+  return deferred.promise;
+};

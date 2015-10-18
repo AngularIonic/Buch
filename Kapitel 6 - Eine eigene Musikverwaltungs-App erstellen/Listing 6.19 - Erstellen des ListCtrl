@@ -1,0 +1,88 @@
+angular.module('musikMax.controllers')
+.controller('ListCtrl', [
+  '$q',
+  '$scope',
+  '$stateParams',
+  '$ionicLoading',
+  '$ionicPopup',
+  'musicService',
+  function($q, $scope, $stateParams, $ionicLoading, $ionicPopup, musicService) {
+    $scope.genre = {};
+
+    // Lade Musikdaten
+    function loadData(genreAlias) {
+      var deferred = $q.defer();
+ 
+      $scope.genreAlias = genreAlias;
+      if (genreAlias !== 'alle') {
+        musicService.getOneGenre(genreAlias).then(function (genre) {
+          $scope.genre = genre;
+        });
+      } else {
+        genreAlias = undefined;
+        $scope.genre.label = 'Alle';
+      }
+
+      // Hole Einträge gefiltert nach Genre
+      musicService.get(undefined, true, genreAlias).then(function (music) {
+        $scope.music = music;
+        deferred.resolve();
+      }, deferred.reject);
+
+      return deferred.promise;
+    }
+
+    // Lade Daten, wenn neues Genre aufgerufen wird
+    $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+      // Tue nichts, falls Genre das gleiche oder Zustandswechsel
+      if (toParams.genre === fromParams.genre || toState.name !== fromState.name) {
+        return true;
+      }
+      // Lade Genre-Informationen
+      $scope.listLoading = true;
+      loadData(toParams.genre).finally(function () {
+        $scope.listLoading = false;
+      });
+    });
+
+    // Initialies Laden
+    $scope.listLoading = true;
+    loadData($stateParams.genre).finally(function () {
+      $scope.listLoading = false;
+    });
+
+    // Funktion für Pull-To-Refresh
+    $scope.refresh = function () {
+      loadData($scope.genreAlias).finally(function () {
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    };
+
+    // Einträge löschen
+    $scope.remove = function (id) {
+      $ionicPopup.show({
+        title: 'Eintrag löschen',
+        template: 'Soll der Eintrag wirklich gelöscht werden?',
+        buttons: [{
+          text: 'Nein',
+          type: 'button-default'
+        }, {
+          text: 'Ja',
+          type: 'button-assertive',
+          onTap: function() {
+            $ionicLoading.show({
+              template: 'Bitte warten...'
+            });
+
+            musicService.delete(id).then(function () {
+              loadData($scope.genreAlias);
+              $scope.$emit('reloadMusic');
+            }).finally(function () {
+              $ionicLoading.hide();
+            });
+          }
+        }]
+      });
+    };
+  }
+]);

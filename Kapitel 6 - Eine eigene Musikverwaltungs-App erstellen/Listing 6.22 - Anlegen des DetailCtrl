@@ -1,0 +1,42 @@
+angular.module('musikMax.controllers')
+.controller('DetailCtrl', [
+  '$scope',
+  '$stateParams',
+  'musicService',
+  function($scope, $stateParams, musicService) {
+    // Daten laden
+    $scope.entryLoading = true;
+    musicService.getOne($stateParams.id).then(function (entry) {
+      $scope.entry = entry;
+    }).finally(function () {
+      $scope.entryLoading = false;
+    });
+
+    // Setzen der Bewertung
+    $scope.rate = function (rating) {
+      musicService.update($scope.entry.id, {
+        rating: rating === $scope.entry.rating ? 0 : rating
+      }).then(function (entry) {
+        $scope.entry = entry;
+      });
+    };
+
+    // Setze "bereits gehört"-Status
+    $scope.listened = function () {
+      musicService.update($scope.entry.id, {
+        listened: !$scope.entry.listened
+      }).then(function (entry) {
+        $scope.entry = entry;
+      });
+    };
+
+    // (De)Favorisieren
+    $scope.favorize = function () {
+      musicService.update($scope.entry.id, {
+        favorite: !$scope.entry.favorite
+      }).then(function (entry) {
+        $scope.entry = entry;
+      });
+    };
+  }
+]);

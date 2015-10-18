@@ -1,0 +1,3 @@
+<ion-nav-buttons side="right">
+  <button class="button button-clear icon ion-plus-circled" ng-click="openModal()"></button>
+</ion-nav-buttons>

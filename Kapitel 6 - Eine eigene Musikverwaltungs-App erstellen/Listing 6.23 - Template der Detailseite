@@ -1,0 +1,31 @@
+<ion-view view-title="Details">
+  <ion-content padding="true">
+    <h2>{{entry.title}}</h2>
+    <p>{{entry.artist}} <span ng-if="entry.year">({{entry.year}})</span></p>
+    <div class="text-right">
+      <button class="button button-clear icon ion-headphone" ng-click="listened()" ng-class="{'button-dark': entry.listened}"></button>
+      <button class="button button-clear icon ion-heart" ng-click="favorize()" ng-class="{'button-assertive': entry.favorite}"></button>
+    </div>
+    <img ng-src="{{entry.cover}}" width="100%" style="margin: 0 auto;">
+    <div class="text-center">
+      <button class="button button-clear icon" ng-click="rate(number)" ng-repeat="number in [1, 2, 3, 4, 5]" ng-class="{'ion-android-star button-dark': entry.rating >= number, 'ion-android-star-outline': entry.rating < number}">
+      </button>
+    </div>
+    <p ng-if="entry.year"></p>
+    <p ng-if="entry.comment" class="text-center"><b>{{entry.comment}}</b></p>
+    <div class="row text-center">
+      <div class="col">
+        Vinyl<br>
+        <i class="icon" style="font-size: 32px;" ng-class="{'ion-ios-checkmark-outline': entry.media.lp, 'ion-ios-close-outline': !entry.media.lp}"></i>
+      </div>
+      <div class="col">
+        CD<br>
+        <i class="icon" style="font-size: 32px;" ng-class="{'ion-ios-checkmark-outline': entry.media.cd, 'ion-ios-close-outline': !entry.media.cd}"></i>
+      </div>
+      <div class="col">
+        Mp3<br>
+        <i class="icon" style="font-size: 32px;" ng-class="{'ion-ios-checkmark-outline': entry.media.mp3, 'ion-ios-close-outline': !entry.media.mp3}"></i>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

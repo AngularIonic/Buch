@@ -1,0 +1,31 @@
+this.getGenres = function () {
+  var deferred = $q.defer(),
+      // Kopie, um Ausgangsdaten nicht zu verändern
+      genres = angular.copy(dataService.genres),
+      music = dataService.music,
+      j = 0,
+      i = 0;
+ 
+  // Bestimme Genre jedes Musikeintrags und zähle diese
+  for (i; i < music.length; i = i + 1) {
+    j = 0;
+    for (j; j < genres.length; j = j + 1) {
+      // Setze Standardanzahl 0
+      if (genres[j].count === undefined) {
+        genres[j].count = 0;
+      }
+
+      // Gehört Musikeintrag zum aktuellen Genre
+      if (music[i].genre === genres[j].alias) {
+        // Erhöhe Anzahl
+        genres[j].count = genres[j].count + 1;
+        break;
+      }
+    }
+  }
+
+  $timeout(function () {
+    deferred.resolve(angular.copy(genres));
+  }, 300);
+  return deferred.promise;
+};

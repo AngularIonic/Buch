@@ -1,0 +1,6 @@
+angular.module('musikMax.services', [])
+.service('musicService', [
+  function () {
+    // Funktionssammlung zur Datenver- und Datenaufarbeitung
+  }
+]);

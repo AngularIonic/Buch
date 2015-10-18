@@ -1,0 +1,33 @@
+angular.module('musikMax.controllers')
+.controller('DashboardCtrl', [
+  '$scope',
+  '$q',
+  '$ionicSlideBoxDelegate',
+  'musicService',
+  function($scope, $q, $ionicSlideBoxDelegate, musicService) {
+    function loadData() {
+      var deferred = $q.defer();
+      // Hole letzte fünf Einträge und lade Statistik
+      $q.all([musicService.get(5), musicService.stats()]).then(function (results) {
+        $scope.last = results[0];
+        $scope.stats = results[1];
+        $ionicSlideBoxDelegate.update();
+        deferred.resolve();
+      }, deferred.reject);
+      return deferred.promise;
+    }
+
+    // Initiales Laden der Daten
+    $scope.dashboardLoading = true;
+    loadData().finally(function () {
+      $scope.dashboardLoading = false;
+    });
+
+    // Funktion für Pull-To-Refresh
+    $scope.refresh = function () {
+      loadData().finally(function () {
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    };
+  }
+]);
