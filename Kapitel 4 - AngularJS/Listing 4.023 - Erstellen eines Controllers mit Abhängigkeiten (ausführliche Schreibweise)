@@ -1,2 +1,2 @@
-meineApp.controller("meinErsterController", [“$scope”, function ($scope) {
+meineApp.controller("meinErsterController", ["$scope", function ($scope) {
 }]);
