@@ -1,0 +1,1 @@
+<img ion-track-tap="Bild geklickt" ion-track-data="{image: 'muhKuh.jpg'}" ng-src="muhKuh.jpg">

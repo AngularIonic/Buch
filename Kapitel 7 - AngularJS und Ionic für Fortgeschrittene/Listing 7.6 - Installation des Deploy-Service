@@ -1,0 +1,2 @@
+ionic plugin add ionic-plugin-deploy
+ionic add ionic-service-deploy

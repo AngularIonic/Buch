@@ -1,0 +1,27 @@
+// Ionic Web Client initialisieren
+Ionic.io();
+
+// Ionic User
+var aktuellerNutzer = Ionic.User.current();
+
+// Ionic Push
+Ionic.io();
+// Test-Verbindung zum Push Service
+var push = new Ionic.Push({
+  "debug": true
+});
+// Gerät registrieren
+push.register(function(token) {
+  // Gerät erfolgreich registriert
+});
+
+// Ionic Deploy
+var deploy = new Ionic.Deploy();
+
+// Ionic Analytics
+meineApp.run(function($ionicPlatform, $ionicAnalytics) {
+  $ionicPlatform.ready(function() {
+    // Registriere Anwendung-Instanz bei Ionic Analytics
+    $ionicAnalytics.register();
+  });
+});

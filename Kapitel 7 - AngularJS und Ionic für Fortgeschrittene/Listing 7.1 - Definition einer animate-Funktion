@@ -1,0 +1,4 @@
+angular.module("meineApp", ["ngAnimate"])
+ .animate(".meine-klasse", function () {
+   // Definition der Animation
+ });

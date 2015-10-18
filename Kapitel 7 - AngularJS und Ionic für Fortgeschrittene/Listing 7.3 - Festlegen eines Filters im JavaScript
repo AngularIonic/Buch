@@ -1,0 +1,7 @@
+angular.module("meineApp")
+ .filter("ersetzeE", function () {
+   // Definition der Animation
+   return function (zeichenkette) {
+     return zeichenkette.replace(/e/g, "");
+   };
+ });

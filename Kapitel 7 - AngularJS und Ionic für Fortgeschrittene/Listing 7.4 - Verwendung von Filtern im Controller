@@ -1,0 +1,14 @@
+angular.module("meineApp")
+ .filter("ersetzeE", function () {
+   // Definition der Animation
+   return function (zeichenkette) {
+     return zeichenkette.replace(/e/g, "");
+   };
+ })
+ .controller("meinController", [
+   "$scope",
+   "ersetzeEFilter",
+   function ($scope, ersetzeEFilter) {
+     $scope.ohneE = ersetzeEFilter("Tennis");
+   }
+ ]);

@@ -1,0 +1,3 @@
+ionic plugin add https://github.com/phonegap-build/PushPlugin.git
+ionic add ngCordova
+ionic add ionic-service-push

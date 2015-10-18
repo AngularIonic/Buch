@@ -1,0 +1,31 @@
+angular.module("meineApp", ["ngAnimate"])
+ .animate(".meine-klasse", function () {
+   // Definition der Animation
+   return {
+     beforeAddClass: function (element, klassenName, fertig) {
+       // Reagieren, bevor eine Klasse hinzugefügt wird
+       // Abschließen
+       fertig();
+     },
+     addClass: function (element, klassenName, fertig) {
+       // Reagieren auf das Hinzufügen einer Klasse
+       // Abschließen
+       fertig();
+     },
+     beforeRemoveClass: function (element, klassenName, fertig) {
+       // Reagieren, bevor eine Klasse entfernt wird
+       // Abschließen
+       fertig();
+     },
+     removeClass: function (element, klassenName, fertig) {
+       // Reagieren auf das Entfernen einer Klasse
+       // Abschließen
+       fertig();
+     },
+     enter: function (element, fertig) {
+       // Eigentliche Animation, wenn Element eingefügt wird
+       // Abschließen
+       fertig();
+     }
+   }
+ });

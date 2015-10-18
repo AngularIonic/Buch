@@ -1,0 +1,4 @@
+$ionicAnalytics.track('Buch Kauf', {
+ title: 'AngularJS und das Ionic Framework',
+ rating: '5 Sterne'
+});

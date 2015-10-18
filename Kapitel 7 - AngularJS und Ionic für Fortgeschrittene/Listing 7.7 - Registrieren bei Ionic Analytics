@@ -1,0 +1,7 @@
+app.run([
+ '$ionicAnalytics',
+ function($ionicAnalytics) {
+   // Registriere Anwendung bei Ionic Analytics
+   $ionicAnalytics.register();
+ }
+]);
