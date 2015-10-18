@@ -1,2 +1,2 @@
 <!-- Button ruft beim Klick $scope.klickMich("Hallo Welt") auf -->
-<button ng-click="klickMich(‘Hallo Welt’)">klickMich</button>
+<button ng-click="klickMich('Hallo Welt')">klickMich</button>
