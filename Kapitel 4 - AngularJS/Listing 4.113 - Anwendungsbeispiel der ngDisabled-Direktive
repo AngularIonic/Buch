@@ -1,0 +1,10 @@
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinController">
+  <form>
+    <label>
+      Hat Fokus {{hatFokus}}<br/>
+      <input type="text" ng-style="{'color': nameVergeben ? 'red' : 'black'}" ng-model="benutzerName" ng-focus="fokus()" ng-blur="checkNutzer()">
+    </label>
+    <button ng-disabled="nameVergeben">Absenden</button>
+  </form>
+</div>

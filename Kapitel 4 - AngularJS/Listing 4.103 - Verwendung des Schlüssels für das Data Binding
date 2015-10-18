@@ -1,0 +1,3 @@
+<div ng-repeat="(eigenschaft, wert) in { '123abc': 'Eintrag1', 'abc123': 'Eintrag2'} track by eigenschaft">
+  {{wert}}
+</div>

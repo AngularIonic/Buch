@@ -1,0 +1,3 @@
+<div ng-repeat="wert in [{ 'id': '123abc' }, { 'id': '123abc' }] track by wert.id">
+  {{wert}}
+</div>

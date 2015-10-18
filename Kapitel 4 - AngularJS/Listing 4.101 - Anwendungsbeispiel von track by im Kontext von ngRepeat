@@ -1,0 +1,3 @@
+<div ng-repeat="wert in [4, 4] track by $index">
+  {{wert}}
+</div>

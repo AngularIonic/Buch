@@ -1,0 +1,17 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Definition für ngModel
+    $scope.meinModel = "Hallo";
+  }
+]);
+...
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinController">
+  <form>
+    <label>
+      {{meinModel}}
+      <input type="text" ng-model="meinModel">
+    </label>
+  </form>
+</div>

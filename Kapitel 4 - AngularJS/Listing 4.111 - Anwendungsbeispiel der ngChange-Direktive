@@ -1,0 +1,21 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Definition für ngModel
+    $scope.meinModel = "Hallo";
+    $scope.anzahl = 0;
+    $scope.setzeAnzahl = function () {
+      $scope.anzahl = $scope.anzahl + 1;
+    };
+  }
+]);
+...
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinController">
+  <form>
+    <label>
+      {{meinModel}} - Änderung {{anzahl}}
+      <input type="text" ng-model="meinModel" ng-change="setzeAnzahl()">
+    </label>
+  </form>
+</div>

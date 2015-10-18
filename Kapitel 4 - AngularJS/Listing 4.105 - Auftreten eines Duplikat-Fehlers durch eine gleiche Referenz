@@ -1,0 +1,30 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Objekt Definition
+    var alf = {
+      "alter": 237,
+      "name": "Alf",
+      "motto": "Null Problemo!",
+      "angst": "Das Fett brennt oder Katzen sterben aus."
+    };
+    // Liste mit zwei Einträgen, die auf dasselbe Objekt zeigen
+    $scope.figuren = [alf, alf];
+  }
+]);
+...
+<!-- Schleife, die alle Einträge der Liste figuren durchläuft -->
+<div ng-repeat="figur in figuren">
+  <p>
+    {{$index}} <b>{{figur.name}}</b> ({{figur.alter}} Jahre)
+    <br/>
+    Mein Motto lautet:
+    <br/>
+    <i>{{figur.motto}}</i>
+    <br/>
+    <br/>
+    Meine Angst ist:
+    <br/>
+    <i>{{figur.angst}}</i>
+  </p>
+</div>

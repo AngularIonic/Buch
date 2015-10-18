@@ -1,0 +1,41 @@
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Objekt Definition
+    $scope.figuren = {
+      "Alf": {
+        "alter": 237,
+        "motto": "Null Problemo!",
+        "angst": "Das Fett brennt oder Katzen sterben aus."
+      },
+      "McGyver": {
+        "alter": 42,
+        "motto": "Dieser McGyver!",
+        "angst": "Im Ernstfall keine Büroklammer dabei zu haben."
+      },
+      "Yoda": {
+        "alter": 900,
+        "motto": "An Dich glauben, du musst junger Padawan!",
+        "angst": "Die Sith vernichten, wir nicht können."
+      },
+    };
+  }
+]);
+...
+<div ng-controller="meinController">
+  <!-- Schleife, die alle Einträge der Liste figuren durchläuft -->
+  <div ng-repeat="(name, info) in figuren">
+    <p>
+      <b>{{name}}</b> ({{info.alter}} Jahre)
+      <br/>
+      Mein Motto lautet:
+      <br/>
+      <i>{{info.motto}}</i>
+      <br/>
+      <br/>
+      Meine Angst ist:
+      <br/>
+      <i>{{info.angst}}</i>
+    </p>
+  </div>
+</div>

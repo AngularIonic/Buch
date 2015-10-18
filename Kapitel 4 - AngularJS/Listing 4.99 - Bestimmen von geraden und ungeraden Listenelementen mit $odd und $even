@@ -1,0 +1,18 @@
+<!-- Setze Hintergrundfarbe für ungerade und gerade Einträge -->
+<div ng-repeat="(name, info) in figuren" ng-style="{'background-color': $even ?
+'#EEEEEE' : '#C9E2FF'}">
+  <!-- Trennstrich vor den Elementen -->
+  <p>
+    {{$index}} <b>{{name}}</b> ({{info.alter}} Jahre)
+    <br/>
+    Mein Motto lautet:
+    <br/>
+    <i>{{info.motto}}</i>
+    <br/>
+    <br/>
+    Meine Angst ist:
+    <br/>
+    <i>{{info.angst}}</i>
+  </p>
+  <hr ng-if="!$last"/>
+</div>

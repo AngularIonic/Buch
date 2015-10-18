@@ -1,0 +1,3 @@
+<form action="endpunkt.php" method="POST">
+  <button>Absenden</button>
+</form>

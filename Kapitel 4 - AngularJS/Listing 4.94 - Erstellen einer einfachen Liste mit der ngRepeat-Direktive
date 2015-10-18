@@ -1,0 +1,16 @@
+// Erzeugung des Controllers
+meineApp.controller("meinController", [
+  "$scope",
+  function ($scope) {
+    // Listen Definition
+    $scope.namen = [“Alf”, “McGyver”, “Yoda”];
+  }
+]);
+...
+<!-- Verknüpfung von Controller mit dem DOM -->
+<div ng-controller="meinController">
+  <!-- Schleife, die alle Einträge der Liste namen durchläuft -->
+  <div ng-repeat="name in namen">
+    <p>{{name}}</p>
+  </div>
+</div>

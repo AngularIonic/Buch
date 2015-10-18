@@ -1,0 +1,15 @@
+<!-- Schleife, die alle Einträge der Liste figuren durchläuft -->
+<div ng-repeat="figur in figuren track by $index">
+  <p>
+    {{$index}} <b>{{figur.name}}</b> ({{figur.alter}} Jahre)
+    <br/>
+    Mein Motto lautet:
+    <br/>
+    <i>{{figur.motto}}</i>
+    <br/>
+    <br/>
+    Meine Angst ist:
+    <br/>
+    <i>{{figur.angst}}</i>
+  </p>
+</div>

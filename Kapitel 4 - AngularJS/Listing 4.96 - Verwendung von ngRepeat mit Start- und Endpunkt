@@ -1,0 +1,19 @@
+<div ng-controller="meinController">
+  <!-- Schleife, die alle Einträge der Liste figuren durchläuft -->
+  <div ng-repeat-start="(name, info) in figuren">
+    <b>{{name}}</b> ({{info.alter}} Jahre)
+  </div>
+  <p>
+    Mein Motto lautet:
+    <br/>
+    <i>{{info.motto}}</i>
+    <br/>
+    <br/>
+    Meine Angst ist:
+    <br/>
+    <i>{{info.angst}}</i>
+  </p>
+  <div ng-repeat-end>
+    <hr />
+  </div>
+</div>

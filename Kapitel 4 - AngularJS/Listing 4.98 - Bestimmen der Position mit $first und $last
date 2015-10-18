@@ -1,0 +1,35 @@
+<!-- Schleife, die alle Einträge der Liste figuren durchläuft -->
+<div ng-repeat="(name, info) in figuren">
+  <!-- Trennstrich vor den Elementen -->
+  <hr ng-if="!$first"/>
+  <p>
+    {{$index}} <b>{{name}}</b> ({{info.alter}} Jahre)
+    <br/>
+    Mein Motto lautet:
+    <br/>
+    <i>{{info.motto}}</i>
+    <br/>
+    <br/>
+    Meine Angst ist:
+    <br/>
+    <i>{{info.angst}}</i>
+  </p>
+</div>
+...
+<!-- Schleife, die alle Einträge der Liste figuren durchläuft -->
+<div ng-repeat="(name, info) in figuren">
+  <p>
+    {{$index}} <b>{{name}}</b> ({{info.alter}} Jahre)
+    <br/>
+    Mein Motto lautet:
+    <br/>
+    <i>{{info.motto}}</i>
+    <br/>
+    <br/>
+    Meine Angst ist:
+    <br/>
+    <i>{{info.angst}}</i>
+  </p>
+  <!-- Trennstrich nach den Elementen -->
+  <hr ng-if="!$last"/>
+</div>
