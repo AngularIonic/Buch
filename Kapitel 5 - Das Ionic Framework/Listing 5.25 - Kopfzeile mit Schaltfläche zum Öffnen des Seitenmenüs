@@ -1,0 +1,9 @@
+<ion-header-bar class="bar-positive" align-title="right">
+  <div class="buttons">
+    <button class="button ion-navicon-round" menu-toggle="left"></button>
+  </div>
+  <h1 class="title">Seitentitel</h1>
+  <div class="buttons">
+    <div class="button">Button 2</div>
+  </div>
+</ion-header-bar>

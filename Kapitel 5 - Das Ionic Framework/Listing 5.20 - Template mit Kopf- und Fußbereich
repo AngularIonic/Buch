@@ -1,0 +1,11 @@
+<body ng-app="meineErsteApp">
+  <ion-header-bar>
+    Kopfzeile
+  </ion-header-bar>
+  <ion-content>
+    Mein Seiteninhalt
+  </ion-content>
+  <ion-footer-bar>
+    Fußzeile
+  </ion-footer-bar>
+</body>

@@ -1,0 +1,43 @@
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp">
+  <ion-nav-bar>
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-nav-view></ion-nav-view>
+  <script type="text/ng-template" id="start.html">
+    <ion-view view-title="Startseite">
+      <ion-nav-title>
+        <strike>Mein Seitentitel</strike>
+      </ion-nav-title>
+      <ion-nav-buttons side="primary">
+        <button class="button">
+          Button1
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="secondary">
+        <button class="button">
+          Button2
+        </button>
+      </ion-nav-buttons>
+      <ion-content>
+        Eine tolle Startseite
+        <a nav-transition="none" ui-sref="zweiter">Auf zur zweiten tollen Seite</a>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script type="text/ng-template" id="zweiter.html">
+    <ion-view view-title="Unterseite">
+      <ion-nav-buttons side="secondary">
+        <button class="button">
+          Button
+        </button>
+      </ion-nav-buttons>
+      <ion-content>
+        Eine ebenso tolle Seite
+        <a nav-transition="android" ui-sref="start">Auf zur tollen Startseite</a>
+      </ion-content>
+    </ion-view>
+  </script>
+</body>

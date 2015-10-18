@@ -1,0 +1,9 @@
+<ion-header-bar class="bar-positive" align-title="left">
+  <div class="buttons">
+    <a class="button">Button</a>
+  </div>
+  <h1 class="title">Mein Seitentitel</h1>
+  <div class="buttons">
+    <div class="button">noch ein Button</div>
+  </div>
+</ion-header-bar>

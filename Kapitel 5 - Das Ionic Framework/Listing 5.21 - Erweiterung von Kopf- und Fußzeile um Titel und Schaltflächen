@@ -1,0 +1,15 @@
+<ion-header-bar class="bar-positive">
+  <div class="buttons">
+    <div class="button">Button</div>
+  </div>
+  <h1 class="title">Mein Seitentitel</h1>
+  <div class="buttons">
+    <button class="button">noch ein Button</button>
+  </div>
+</ion-header-bar>
+<ion-content padding="true">
+  Mein Seiteninhalt
+</ion-content>
+<ion-footer-bar class="bar-stable">
+  <h1 class="title">Titel im Footer</h1>
+</ion-footer-bar>

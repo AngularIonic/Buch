@@ -1,0 +1,27 @@
+<ion-header-bar class="bar-positive" align-title="right">
+  <div class="buttons">
+    <a class="button">Button 1</a>
+  </div>
+  <h1 class="title">Seitentitel</h1>
+  <div class="buttons">
+    <div class="button">Button 2</div>
+  </div>
+</ion-header-bar>
+<ion-header-bar class="bar-subheader">
+  <h1 class="title">Sub-Header</h1>
+</ion-header-bar>
+<ion-content padding="true">
+  Mein Seiteninhalt
+</ion-content>
+<ion-footer-bar class="bar-stable" align-title="left">
+  <div class="buttons">
+    <a class="button">Button 1</a>
+  </div>
+  <h1 class="title">Titel im Footer</h1>
+  <div class="buttons">
+    <a class="button">Button 2</a>
+  </div>
+</ion-footer-bar>
+<ion-footer-bar class="bar-subfooter">
+  <h1 class="title">Sub-Footer</h1>
+</ion-footer-bar>

@@ -1,0 +1,11 @@
+<ion-side-menu side="left" expose-aside-when="large">
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">Seitenmenü</h1>
+  </ion-header-bar>
+  <ion-header-bar class="bar-subheader">
+    <h1 class="title">Sub-Header</h1>
+  </ion-header-bar>
+  <ion-content>
+    <a class="item">Menüeintrag</a>
+  </ion-content>
+</ion-side-menu>

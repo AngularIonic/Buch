@@ -1,0 +1,8 @@
+<ion-view view-title="Meine Seite">
+  <ion-content scroll="false">
+    Ein nicht-scrollbarer ionContent
+    <ion-scroll delegate-handle="meinScroller" style="height: 500px" zooming="true">
+      Mein scrollbarer Inhalt im ionScroll!
+    </ion-scroll>
+  </ion-content>
+</ion-view>

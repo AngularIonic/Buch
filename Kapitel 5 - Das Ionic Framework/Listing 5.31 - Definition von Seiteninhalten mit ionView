@@ -1,0 +1,39 @@
+meineApp.config([
+  "$urlRouterProvider",
+  "$stateProvider",
+  function ($urlRouterProvider, $stateProvider) {
+    // Standardroute definieren
+    $urlRouterProvider.otherwise("/start");
+
+    // States definieren
+    $stateProvider
+      .state("start", {
+        url: "/start",
+        templateUrl: "start.html",
+      })
+      .state("zweiter", {
+        url: "/zweiter",
+        templateUrl: "zweiter.html",
+      })
+}]);
+...
+<!-- Verknüpfung von body-Tag mit dem Modul -->
+<body ng-app="meineErsteApp">
+  <ion-nav-view></ion-nav-view>
+  <script type="text/ng-template" id="start.html">
+    <ion-view>
+      <ion-content>
+        Eine tolle Startseite
+        <a ui-sref="zweiter">Auf zur zweiten tollen Seite</a>
+      </ion-content>
+    </ion-view>
+  </script>
+  <script type="text/ng-template" id="zweiter.html">
+    <ion-view>
+      <ion-content>
+        Eine ebenso tolle Seite
+        <a ui-sref="start">Auf zur tollen Startseite</a>
+      </ion-content>
+    </ion-view>
+  </script>
+</body>

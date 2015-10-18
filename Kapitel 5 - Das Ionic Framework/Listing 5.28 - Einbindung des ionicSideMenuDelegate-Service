@@ -1,0 +1,3 @@
+meineApp.controller("meinController", ["$ionicSideMenuDelegate", function($ionicSideMenuDelegate) {
+  // Zugriff auf Seitenmenüs über $ionicSideMenuDelegate
+}]);
